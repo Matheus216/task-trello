@@ -1,0 +1,164 @@
+body{
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif;
+    background-image: url(https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/a335cb30e1c5e6f3d179b8efe42e347a/photo-1541649833730-8d1f1b8a776c.jpg) ;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: center;
+}
+
+.content-grid{
+    display: flex;
+}
+
+.painel {
+    width: 272px;
+    background: #ebecf0;
+    border-radius: 10px;
+    padding: 0;
+    height: auto;
+    margin-right: 10px;
+}
+
+.task-painel {
+    width: 260px;
+    background: white;
+    height: 127px;
+    margin-left: 5px;
+    margin-top: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.header-painel{
+    margin: 10px 10px 5px;
+    display: inline-block;
+}
+    .header-painel input{
+        width: 185px;
+        display: inline-block;
+        height: 28px;
+        background: none;
+        border: none;
+        padding-left: 15px;
+        color: #6f6f6f;
+    }
+    
+    .header-painel input:focus{
+        background: white;
+        outline: none;
+        border: 2px solid #246f8c;
+        border-radius: 5px;
+        color: black;
+    }
+    .header-painel i{
+        margin-left: 4px;
+        cursor: pointer;
+        padding: 9px;
+        border-radius: 8px;
+        transition:  0.5s;
+        color: #246f8c;
+    }
+
+    .header-painel i:hover{
+        background: #bbbbbb;
+        transition:  0.5s;
+    }
+
+.footer-content{
+    margin: 10px 10px;
+    display: inline-block;
+}
+
+.footer-painel{
+    transition:  0.5s;
+    padding: 5px 5px 5px 10px;
+    border-radius: 8px;
+    display: inline-block;
+    width: 185px;
+    font-size: 15px;
+    color: #6f6f6f;
+    cursor: pointer;
+}
+
+.footer-painel:hover{
+    background: #bbbbbb;
+    transition:  0.5s;
+}
+
+.icon-circle{
+    color: #246f8c;
+    margin-right: 5px
+}
+
+.icon-add{
+    display: inline-block;
+    color: #246f8c;
+    margin-left: 0px;
+    cursor: pointer;
+    padding: 9px;
+    border-radius: 8px;
+}
+
+    .icon-add:hover{
+        background: #bbbbbb;
+        transition:  0.5s;
+    }
+
+.btn-general{
+    border: none;
+    background: none;
+    color: #6f6f6f;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.btn-general:focus{
+    outline: none;
+}
+
+.btn-externo{
+    background: #0000007a;
+    padding: 15px;
+    border-radius: 8px;
+    width: 300px;
+    cursor: pointer;
+    transition: .5s;
+}
+    .btn-externo .btn-general{
+        color:  #c57c0e;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+    .btn-externo:hover{
+        background: #000000ba;
+        color: white;
+        transition: .5s;
+    }
+
+.pop-up {
+    width: 290px;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    position: fixed;
+    display: none;
+    transition: .5s;
+    color: #565656
+}
+
+.pop-up h4{
+    width: 100px;
+    margin-right: 35px;
+    margin-left: 40%;
+    display: inline-block;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.pop-up i{
+    color: #565656;
+}
+
+.pop-up i:hover{
+    background: none;
+}

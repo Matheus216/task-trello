@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trello</title>
+
+    <link rel="stylesheet" href="./index.css">
+
+    <script src="https://kit.fontawesome.com/af5621599b.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="content-body" class="content-grid">
+        <div class="painel">
+            <div class="header-painel">
+                <input value="A Fazer" />
+                <i class="fas fa-ellipsis-h" onclick="popupShow()"></i>
+                <div id="poopup" class="pop-up">
+                    <div>
+                        <h4>Ações</h4>
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <hr />
+                    <ul>
+                        <li>Adicionar cartão..</li>
+                        <li>Copiar Lista..</li>
+                        <li>Mover Lista..</li>
+                        <li>Seguir..</li>
+                    </ul>
+                    <hr />
+                </div>
+
+            </div>
+            <canvas class="task-painel">
+            </canvas>
+            <canvas class="task-painel">
+            </canvas>
+            <div class="footer-content">
+                <div class="footer-painel">
+                    <i class="fas fa-plus-circle icon-circle"></i>
+                    <button class="btn-general">Adicionar cartão</button>
+                </div>
+                <div class="icon-add">
+                    <i class="fas fa-door-open"></i>
+                </div>
+            </div>
+        </div>
+        <div id="externo">
+            <div class="btn-externo" onclick="addPainel()">
+                <i class="fas fa-plus-circle icon-circle"></i>
+                <button class="btn-general">Adicionar painel</button>
+            </div>
+        </div>
+    </div>
+    <script src="./index.js"></script>
+</body>
+
+</html>
