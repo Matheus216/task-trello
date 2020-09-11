@@ -1,9 +1,10 @@
 var idAtual = 1;
+var idTask = 1;
 
 initializer();
 
-function initializer() { 
-    addPainel(); 
+function initializer() {
+    addPainel();
 }
 /*
     Funções dados Drag 
@@ -22,13 +23,22 @@ function dragover_handler(ev) {
     ev.dataTransfer.dropEffect = "move";
 }
 
-function drop_handler(ev) {
-    ev.preventDefault(); 
+function drop_handler(ev, id) {
+    ev.preventDefault();
 
     //Pega o id do alvo e adiciona o elemento que foi movido para o DOM do alvo
-    var data = ev.dataTransfer.getData('text'); 
-    ev.target.appendChild(document.getElementById(data));
+
+    var data = ev.dataTransfer.getData('text');
+    let element = document.getElementById(`container-task_${id}`)
+
+    element.appendChild(document.getElementById(data));
 }
+
+function dragent_handler(event) {
+    var dragData = event.dataTransfer;
+    console.log("mozUserCancelled = " + dragData.mozUserCancelled);
+}
+
 
 function addPainel() {
     let body = document.getElementById('painel')
@@ -36,7 +46,8 @@ function addPainel() {
 
     for (let i = idAtual; i < (idAtual + 1); i++) {
         let painelHtml = `
-            <div class="painel">
+            <div>
+            <div class="painel" ondrop="drop_handler(event, ${i});" ondragover="dragover_handler(event)">
                 <div class="header-painel">
                     <input value="A Fazer" />
                     <i class="fas fa-ellipsis-h" onclick="popupShow(${i})"></i>
@@ -55,28 +66,23 @@ function addPainel() {
                     <hr />
                 </div>
                 </div>
-                <div ondrop="drop_handler(event);" ondragover="dragover_handler(event)">
-                    <canvas 
-                        id="task_${i}" 
-                        class="task-painel"  
-                        draggable="true" 
-                        ondragstart="dragstart_handler(event);">
-                    </canvas>
+                <div id="container-task_${i}" ondrop="drop_handler(event, ${i});" ondragover="dragover_handler(event)">
+                    
                 </div>
                 <div class="footer-content">
                     <div class="footer-painel">
                         <i  class="fas fa-plus-circle icon-circle"></i>
-                        <button class="btn-general">Adicionar cartão</button>
+                        <button class="btn-general" onClick="addTask(${i})" >Adicionar cartão</button>
                     </div>
                     <div class="icon-add">
                         <i class="fas fa-door-open"></i>
                     </div>
                 </div>
-            </div>`
+            </div></div>`
 
         body.innerHTML += painelHtml;
     }
-    
+
     idAtual++;
     console.log(idAtual)
     return false;
@@ -95,4 +101,19 @@ function popupShow(id) {
 function closePop(id) {
     let element = document.getElementById(`poopup_${id}`);
     element.style.display = 'none'
+}
+
+function addTask(id) {
+    let element = document.getElementById(`container-task_${id}`);
+
+    element.innerHTML += `
+    <canvas 
+        id="task_${idTask}" 
+        class="task-painel"  
+        draggable="true" 
+        ondragstart="dragstart_handler(event)";
+        ondragend="dragent_handler(event)">
+    </canvas>
+    `;
+    idTask++;
 }
