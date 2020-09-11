@@ -12,7 +12,5 @@ namespace trello.api.Models
         public string Description { get; set; } 
         public string Title { get; set; }
         public IList<TaskModel> Task { get; set; }
-
-        public int TaskId { get; set; }
     }
 }
