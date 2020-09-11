@@ -46,17 +46,17 @@ function addPainel() {
 
     for (let i = idAtual; i < (idAtual + 1); i++) {
         let painelHtml = `
-            <div>
-            <div class="painel" ondrop="drop_handler(event, ${i});" ondragover="dragover_handler(event)">
-                <div class="header-painel">
-                    <input value="A Fazer" />
-                    <i class="fas fa-ellipsis-h" onclick="popupShow(${i})"></i>
-                    <div id="poopup_${i}" class="pop-up" >
+        <div>
+        <div class="painel" ondrop="drop_handler(event, ${i});" ondragover="dragover_handler(event)">
+            <div class="header-painel">
+                <input value="A Fazer" />
+                <i class="fas fa-ellipsis-h" onclick="popupShow(${i})"></i>
+                <div id="poopup_${i}" class="pop-up">
                     <div>
                         <h4>Ações</h4>
                         <i class="fas fa-times" onclick="closePop(${i})"></i>
                     </div>
-                    <hr /> 
+                    <hr />
                     <ul>
                         <li>Adicionar cartão..</li>
                         <li>Copiar Lista..</li>
@@ -65,20 +65,21 @@ function addPainel() {
                     </ul>
                     <hr />
                 </div>
+            </div>
+            <div id="container-task_${i}" ondrop="drop_handler(event, ${i});" ondragover="dragover_handler(event)">
+    
+            </div>
+            <div class="footer-content">
+                <div class="footer-painel">
+                    <i class="fas fa-plus-circle icon-circle"></i>
+                    <button class="btn-general" onClick="addTask(${i})">Adicionar cartão</button>
                 </div>
-                <div id="container-task_${i}" ondrop="drop_handler(event, ${i});" ondragover="dragover_handler(event)">
-                    
+                <div class="icon-add">
+                    <i class="fas fa-door-open"></i>
                 </div>
-                <div class="footer-content">
-                    <div class="footer-painel">
-                        <i  class="fas fa-plus-circle icon-circle"></i>
-                        <button class="btn-general" onClick="addTask(${i})" >Adicionar cartão</button>
-                    </div>
-                    <div class="icon-add">
-                        <i class="fas fa-door-open"></i>
-                    </div>
-                </div>
-            </div></div>`
+            </div>
+        </div>
+    </div>`
 
         body.innerHTML += painelHtml;
     }
