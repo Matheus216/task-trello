@@ -2,8 +2,9 @@ body{
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif;
     background-image: url(https://trello-backgrounds.s3.amazonaws.com/SharedBackground/2400x1600/a335cb30e1c5e6f3d179b8efe42e347a/photo-1541649833730-8d1f1b8a776c.jpg) ;
     background-repeat: no-repeat;
-    background-position: top;
-    background-size: center;
+    background-position: unset;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .content-grid{

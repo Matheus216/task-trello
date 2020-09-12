@@ -1,14 +1,13 @@
 var idAtual = 1;
 var idTask = 1;
+var urlLocal = "http://localhost:5000/api/";
 
 initializer();
 
 function initializer() {
-    addPainel();
+    searchPanel(); 
 }
-/*
-    Funções dados Drag 
-*/
+
 
 function dragstart_handler(ev) {
     //Determina o efeito de arraste podendo ser copy / move / link
@@ -39,11 +38,60 @@ function dragent_handler(event) {
     console.log("mozUserCancelled = " + dragData.mozUserCancelled);
 }
 
+function searchPanel() {
+    
+    $.ajax({
+        type: "GET",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        url: urlLocal + 'painting',
+        success: function (response) {
+            let panel = response.panel; 
+
+            for (let i = 0; i < panel.length; i++) {    
+                let painelHtml = `
+                <div>
+                <div class="painel" ondrop="drop_handler(event, ${panel[i].panelId});" ondragover="dragover_handler(event)">
+                    <div class="header-painel">
+                        <input value="A Fazer" />
+                        <i class="fas fa-ellipsis-h" onclick="popupShow(${panel[i].panelId})"></i>
+                        <div id="poopup_${panel[i].panelId}" class="pop-up">
+                            <div>
+                                <h4>Ações</h4>
+                                <i class="fas fa-times" onclick="closePop(${panel[i].panelId})"></i>
+                            </div>
+                            <hr />
+                            <ul>
+                                <li>Adicionar cartão..</li>
+                                <li>Copiar Lista..</li>
+                                <li>Mover Lista..</li>
+                                <li>Seguir..</li>
+                            </ul>
+                            <hr />
+                        </div>
+                    </div>
+                    <div id="container-task_${panel[i].panelId}" ondrop="drop_handler(event, ${panel[i].panelId});" ondragover="dragover_handler(event)">
+            
+                    </div>
+                    <div class="footer-content">
+                        <div class="footer-painel">
+                            <i class="fas fa-plus-circle icon-circle"></i>
+                            <button class="btn-general" onClick="addTask(${panel[i].panelId})">Adicionar cartão</button>
+                        </div>
+                        <div class="icon-add">
+                            <i class="fas fa-door-open"></i>
+                        </div>
+                    </div>
+                </div></div>`
+                document.getElementById('painel').innerHTML += painelHtml;
+            }
+        }
+    });
+}
+
 
 function addPainel() {
-    let body = document.getElementById('painel')
-    console.log(idAtual)
-
+    let body = document.getElementById('painel');
     for (let i = idAtual; i < (idAtual + 1); i++) {
         let painelHtml = `
         <div>
@@ -86,6 +134,8 @@ function addPainel() {
 
     idAtual++;
     console.log(idAtual)
+
+    
     return false;
 }
 
@@ -114,7 +164,6 @@ function addTask(id) {
         draggable="true" 
         ondragstart="dragstart_handler(event)";
         ondragend="dragent_handler(event)">
-    </canvas>
-    `;
+    </canvas>`;
     idTask++;
 }
