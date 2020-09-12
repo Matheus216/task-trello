@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using trello.api.Service;
+using trello.api.Service.PaintingService;
 
 namespace trello.api.Controllers
 {
@@ -8,17 +9,17 @@ namespace trello.api.Controllers
     [ApiController]
     public class PaintingController : ControllerBase
     {
-        public PaintingService Service { get; set; }
+        private readonly IPaintingService _service; 
 
-        public PaintingController()
+        public PaintingController(IPaintingService service)
         {
-            Service = new PaintingService();
+            _service = service; 
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return Ok(Service.GetPainting());
+            return Ok(_service.GetPainting());
         }
 
         [HttpGet("{id}")]

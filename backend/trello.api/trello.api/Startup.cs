@@ -1,15 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using trello.api.Repositories.Paiting;
+using trello.api.Service.PaintingService;
 
 namespace trello.api
 {
@@ -26,6 +23,8 @@ namespace trello.api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            ImplementDI(services); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +46,12 @@ namespace trello.api
             {
                 endpoints.MapControllers();
             });
+        }
+
+        public void ImplementDI(IServiceCollection services)
+        {
+            services.AddTransient<IPaintingRepository, PaintingRepository>();
+            services.AddTransient<IPaintingService, PaintingService>();
         }
     }
 }

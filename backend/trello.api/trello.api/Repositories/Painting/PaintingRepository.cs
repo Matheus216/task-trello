@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 using trello.api.Models;
+using trello.api.Repositories.Entities;
 
-namespace trello.api.Service
+namespace trello.api.Repositories.Paiting
 {
-    public class PaintingService
+    public class PaintingRepository : IPaintingRepository
     {
-        public PaintingModel GetPainting() 
+        public PaintingEntityModel Get()
         {
             var task = new List<TaskModel>();
             task.Add(new TaskModel
@@ -28,14 +29,15 @@ namespace trello.api.Service
                 PanelId = 1,
             });
 
-            var painting = new PaintingModel
+            var painting = new PaintingEntityModel
             {
                 Description = "Teste",
                 PaintingId = 1,
-                Panel = panel
+                Panel = panel,
+                PanelId = 1
             };
 
-            return painting; 
+            return painting;
         }
     }
 }
