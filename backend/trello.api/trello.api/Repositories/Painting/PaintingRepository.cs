@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using trello.api.Models;
-using trello.api.Repositories.Entities;
+using trello.api.Repositories.Entities.Models;
 
 namespace trello.api.Repositories.Paiting
 {
@@ -20,9 +20,9 @@ namespace trello.api.Repositories.Paiting
                 TaskId = 1
             });
 
-            var panel = new List<PanelModel>();
+            var panel = new List<PanelEntityModel>();
 
-            panel.Add(new PanelModel(task)
+            panel.Add(new PanelEntityModel
             {
                 Description = "Primeiro panel",
                 Title = "Testando",

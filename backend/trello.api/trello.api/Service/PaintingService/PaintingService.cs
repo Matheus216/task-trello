@@ -16,14 +16,15 @@ namespace trello.api.Service.PaintingService
         {
             var search = _repository.Get(); 
 
+
             var painting = new PaintingModel
             {
                 Description = search.Description,
                 PaintingId = search.PaintingId,
-                Panel = search.Panel
+                Panel = null
             };
 
             return painting; 
         }
     }
-}
+} 

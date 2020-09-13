@@ -1,10 +1,12 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using trello.api.Repositories.Entities.Context;
 using trello.api.Repositories.Paiting;
 using trello.api.Service.PaintingService;
 
@@ -25,6 +27,10 @@ namespace trello.api
             services.AddControllers();
 
             ImplementDI(services); 
+
+            services.AddDbContext<ContextDB>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("stringConnection"))
+            ); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,16 +1,14 @@
 using System.Collections.Generic;
+using trello.api.Models.Abstract;
 
 namespace trello.api.Models
 {
-    public class PanelModel
+    public class PanelModel : PanelAbstractModel
     {
-        public PanelModel(IList<TaskModel> task)
+        public PanelModel()
         {
-            Task = task;
+            Task = new List<TaskModel>();
         }
-        public int PanelId { get; set; }   
-        public string Description { get; set; } 
-        public string Title { get; set; }
-        public IList<TaskModel> Task { get; set; }
+        public List<TaskModel> Task { get; set; }
     }
 }

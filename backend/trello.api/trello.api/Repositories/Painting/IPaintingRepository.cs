@@ -1,4 +1,4 @@
-using trello.api.Repositories.Entities;
+using trello.api.Repositories.Entities.Models;
 
 namespace trello.api.Repositories.Paiting
 {

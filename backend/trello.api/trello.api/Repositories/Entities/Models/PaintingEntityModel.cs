@@ -1,9 +1,10 @@
-using trello.api.Models;
+using System.Collections.Generic;
+using trello.api.Models.Abstract;
 
-namespace trello.api.Repositories.Entities
+namespace trello.api.Repositories.Entities.Models
 {
     public class PaintingEntityModel : PaintingAbstractModel
     {
-        public int PanelId { get; set; }
+        public ICollection<PanelEntityModel> Panel { get; set; }
     }
 }
