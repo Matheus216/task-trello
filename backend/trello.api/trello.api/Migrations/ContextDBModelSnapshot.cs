@@ -29,9 +29,6 @@ namespace trello.api.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PanelId")
-                        .HasColumnType("int");
-
                     b.HasKey("PaintingId");
 
                     b.ToTable("Painting");

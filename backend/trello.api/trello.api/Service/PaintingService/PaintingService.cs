@@ -14,13 +14,13 @@ namespace trello.api.Service.PaintingService
 
         public PaintingModel GetPainting() 
         {
-            var search = _repository.Get(); 
+            var search = _repository.GetAll(); 
 
 
             var painting = new PaintingModel
             {
-                Description = search.Description,
-                PaintingId = search.PaintingId,
+                Description = search[0].Description,
+                PaintingId = search[0].PaintingId,
                 Panel = null
             };
 

@@ -1,43 +1,42 @@
 using System;
 using System.Collections.Generic;
-using trello.api.Models;
+using trello.api.Repositories.Entities.Context;
 using trello.api.Repositories.Entities.Models;
 
 namespace trello.api.Repositories.Paiting
 {
     public class PaintingRepository : IPaintingRepository
     {
-        public PaintingEntityModel Get()
+        private readonly ContextDB _context;
+
+        public PaintingRepository()
         {
-            var task = new List<TaskModel>();
-            task.Add(new TaskModel
-            {
-                DateBegin = DateTime.Now,
-                DateFinished = null,
-                Description = "Primeira Task",
-                Estimated = "4",
-                Status = EnumStatus.Aberto,
-                TaskId = 1
-            });
+            _context = new ContextDB();
+        }
 
-            var panel = new List<PanelEntityModel>();
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+ 
+        public List<PaintingEntityModel> GetAll()
+        {
+            throw new NotImplementedException();
+        }
 
-            panel.Add(new PanelEntityModel
-            {
-                Description = "Primeiro panel",
-                Title = "Testando",
-                PanelId = 1,
-            });
+        public PaintingEntityModel GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
 
-            var painting = new PaintingEntityModel
-            {
-                Description = "Teste",
-                PaintingId = 1,
-                Panel = panel,
-                PanelId = 1
-            };
+        public PaintingEntityModel Insert(PaintingEntityModel objIn)
+        {
+            throw new NotImplementedException();
+        }
 
-            return painting;
+        public PaintingEntityModel Update(PaintingEntityModel objIn)
+        {
+            throw new NotImplementedException();
         }
     }
 }

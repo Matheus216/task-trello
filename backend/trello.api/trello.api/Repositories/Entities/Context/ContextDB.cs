@@ -6,6 +6,9 @@ namespace trello.api.Repositories.Entities.Context
 {
     public class ContextDB : DbContext
     {
+        public ContextDB()
+        {
+        }
         public ContextDB(DbContextOptions<ContextDB> options) : base(options) { }
 
         public DbSet<PaintingEntityModel> Paitings { get; set; }

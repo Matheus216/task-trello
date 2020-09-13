@@ -10,8 +10,8 @@ using trello.api.Repositories.Entities.Context;
 namespace trello.api.Migrations
 {
     [DbContext(typeof(ContextDB))]
-    [Migration("20200913173945_ContextCompleted")]
-    partial class ContextCompleted
+    [Migration("20200913182327_AjustContext")]
+    partial class AjustContext
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,9 +30,6 @@ namespace trello.api.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PanelId")
-                        .HasColumnType("int");
 
                     b.HasKey("PaintingId");
 

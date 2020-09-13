@@ -7,7 +7,5 @@ namespace trello.api.Models.Abstract
     {
         public int PaintingId { get; set; }
         public string Description { get; set; }
-        public int PanelId { get; set; }
-
     }
 }
