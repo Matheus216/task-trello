@@ -13,6 +13,7 @@ namespace trello.api.Service.Task
 
         public TaskService(ITaskRepository repository, IMapper mapper)
         {
+            _repository = repository;
             _mapper = mapper; 
         }
 

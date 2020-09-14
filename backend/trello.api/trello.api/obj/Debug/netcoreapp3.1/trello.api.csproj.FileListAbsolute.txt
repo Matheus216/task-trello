@@ -59,3 +59,4 @@ D:\Repositories\Code\Trello\backend\trello.api\trello.api\bin\Debug\netcoreapp3.
 D:\Repositories\Code\Trello\backend\trello.api\trello.api\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\Repositories\Code\Trello\backend\trello.api\trello.api\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\Repositories\Code\Trello\backend\trello.api\trello.api\obj\Debug\netcoreapp3.1\trello.api.csproj.CopyComplete
+D:\Repositories\Code\Trello\backend\trello.api\trello.api\bin\Debug\netcoreapp3.1\AutoMapper.dll

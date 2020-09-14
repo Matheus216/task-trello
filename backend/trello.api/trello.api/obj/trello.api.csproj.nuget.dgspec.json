@@ -41,7 +41,7 @@
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
-              "version": "[*, )"
+              "version": "[10.0.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
