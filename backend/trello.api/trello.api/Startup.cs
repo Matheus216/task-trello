@@ -1,16 +1,14 @@
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using trello.api.Models;
 using trello.api.Repositories.Entities.Context;
 using trello.api.Repositories.Entities.Models;
 using trello.api.Repositories.Paiting;
-using trello.api.Service.PaintingService;
+using trello.api.Service.Painting;
 
 namespace trello.api
 {

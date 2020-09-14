@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using trello.api.Service;
-using trello.api.Service.PaintingService;
+using trello.api.Service.Painting;
 
 namespace trello.api.Controllers
 {

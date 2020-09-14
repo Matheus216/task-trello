@@ -2,7 +2,7 @@ using AutoMapper;
 using trello.api.Models;
 using trello.api.Repositories.Paiting;
 
-namespace trello.api.Service.PaintingService
+namespace trello.api.Service.Painting
 {
     public class PaintingService : IPaintingService
     {

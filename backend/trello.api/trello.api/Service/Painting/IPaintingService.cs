@@ -1,7 +1,7 @@
 
 using trello.api.Models;
 
-namespace trello.api.Service.PaintingService
+namespace trello.api.Service.Painting
 {
     public interface IPaintingService
     {
