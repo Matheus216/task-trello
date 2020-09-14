@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Dcj/Duevb7eVZRMUg6JQASYPlKsKFETJzIsR1o65dO+UW43huzwTXOgZw6Z8OyPZ5ZYUv/lXJMXIuJ4t8hfDvA==",
+  "dgSpecHash": "BFx9hLEzKLH58lKxZ95Jl6onZ2M4xwj4/L162ahd9RqzqgR+uepHUyTnTfU247AwkqQTBKO8vL3ieHLH54UzZA==",
   "success": true,
   "projectFilePath": "D:\\Repositories\\Code\\Trello\\backend\\trello.api\\trello.api\\trello.api.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\mathe\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
     "C:\\Users\\mathe\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\mathe\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Users\\mathe\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
@@ -68,7 +69,7 @@
     "C:\\Users\\mathe\\.nuget\\packages\\system.objectmodel\\4.3.0\\system.objectmodel.4.3.0.nupkg.sha512",
     "C:\\Users\\mathe\\.nuget\\packages\\system.private.datacontractserialization\\4.3.0\\system.private.datacontractserialization.4.3.0.nupkg.sha512",
     "C:\\Users\\mathe\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
-    "C:\\Users\\mathe\\.nuget\\packages\\system.reflection.emit\\4.3.0\\system.reflection.emit.4.3.0.nupkg.sha512",
+    "C:\\Users\\mathe\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\mathe\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.3.0\\system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
     "C:\\Users\\mathe\\.nuget\\packages\\system.reflection.emit.lightweight\\4.3.0\\system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
     "C:\\Users\\mathe\\.nuget\\packages\\system.reflection.extensions\\4.3.0\\system.reflection.extensions.4.3.0.nupkg.sha512",

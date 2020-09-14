@@ -6,7 +6,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using trello.api.Models;
 using trello.api.Repositories.Entities.Context;
+using trello.api.Repositories.Entities.Models;
 using trello.api.Repositories.Paiting;
 using trello.api.Service.PaintingService;
 
@@ -26,6 +28,7 @@ namespace trello.api
         {
             services.AddControllers();
 
+            ImplementMapper(services);
             ImplementDI(services); 
 
             services.AddDbContext<ContextDB>(options =>
@@ -58,6 +61,17 @@ namespace trello.api
         {
             services.AddTransient<IPaintingRepository, PaintingRepository>();
             services.AddTransient<IPaintingService, PaintingService>();
+        }
+
+        public void ImplementMapper(IServiceCollection services)
+        {
+            var config = new AutoMapper.MapperConfiguration(config => {
+                config.CreateMap<PaintingModel, PaintingEntityModel>();
+                config.CreateMap<PanelModel, PanelEntityModel>();
+                config.CreateMap<TaskModel, TaskEntityModel>();
+            });
+
+            services.AddSingleton(config);
         }
     }
 }
