@@ -29,6 +29,13 @@ namespace trello.api.Repositories.Entities.Context
                 .ToTable("Task")
                 .HasKey(x => x.TaskId); 
         }
+
+          protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(
+                @"Server=DESKTOP-AV7L5CR\MICRO;Database=Trello;Integrated Security=True");
+        }
+
         /*
             Comandos migrations
             dotnet ef migrations add NomeMigracao

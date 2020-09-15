@@ -31,7 +31,7 @@ namespace trello.api.Repositories.Task
 
         public TaskEntityModel Insert(TaskEntityModel task)
         {
-            var insered = context.Add(task);
+            var insered = context.Task.Add(task);
             context.SaveChanges(); 
 
             return insered.Entity;     

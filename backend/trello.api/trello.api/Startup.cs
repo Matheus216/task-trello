@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -8,7 +9,9 @@ using trello.api.Models;
 using trello.api.Repositories.Entities.Context;
 using trello.api.Repositories.Entities.Models;
 using trello.api.Repositories.Paiting;
+using trello.api.Repositories.Task;
 using trello.api.Service.Painting;
+using trello.api.Service.Task;
 
 namespace trello.api
 {
@@ -25,9 +28,9 @@ namespace trello.api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
-            ImplementMapper(services);
+            
             ImplementDI(services); 
+            ImplementMapper(services);
 
             services.AddDbContext<ContextDB>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("stringConnection"))
@@ -59,6 +62,8 @@ namespace trello.api
         {
             services.AddTransient<IPaintingRepository, PaintingRepository>();
             services.AddTransient<IPaintingService, PaintingService>();
+            services.AddTransient<ITaskService, TaskService>();
+            services.AddTransient<ITaskRepository, TaskRepository>();
         }
 
         public void ImplementMapper(IServiceCollection services)
@@ -67,9 +72,14 @@ namespace trello.api
                 config.CreateMap<PaintingModel, PaintingEntityModel>();
                 config.CreateMap<PanelModel, PanelEntityModel>();
                 config.CreateMap<TaskModel, TaskEntityModel>();
+                config.CreateMap<PaintingEntityModel, PaintingModel>();
+                config.CreateMap<PanelEntityModel, PanelModel>();
+                config.CreateMap<TaskEntityModel, TaskModel>();
             });
 
-            services.AddSingleton(config);
+            IMapper mapper = config.CreateMapper();
+
+            services.AddSingleton(mapper);
         }
     }
 }

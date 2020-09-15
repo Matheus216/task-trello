@@ -13,5 +13,6 @@ namespace trello.api.Models.Abstract
         public DateTime DateBegin { get; set; }
         public DateTime? DateFinished { get; set; }
         public string Estimated { get; set; }
+        public int PanelId { get; set; }
     }
 }
