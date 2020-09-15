@@ -31,8 +31,8 @@ namespace trello.api.Controllers
             return "value";
         }
 
-        [HttpPost("Created")]
-        public ActionResult Created([FromBody] TaskModel task)
+        [HttpPost("Save")]
+        public ActionResult<TaskModel> Save([FromBody] TaskModel task)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace trello.api.Controllers
 
                 var taskCreated = _service.Insert(task); 
 
-                return Created(taskCreated); 
+                return Ok(taskCreated); 
             }
             catch (Exception ex)
             {
