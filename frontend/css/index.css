@@ -5,6 +5,8 @@ body{
     background-position: unset;
     background-size: cover;
     background-attachment: fixed;
+    margin: 0;
+    padding: 0;
 }
 
 .content-grid{
@@ -162,4 +164,23 @@ body{
 
 .pop-up i:hover{
     background: none;
+}
+
+.modal {
+    --x: 700px;
+    width: var(--x);
+    height: 500px;
+    background-color: white;
+    left:  calc(50% - calc(var(--x) / 2));
+    z-index: -1;
+}
+
+.teste { 
+    background: black;
+    position: relative;
+    height: 1000px;
+    width: 100%;
+    z-index: 10;
+    left: 0;
+    top: 0;
 }
