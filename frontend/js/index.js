@@ -52,7 +52,7 @@ function searchPanel() {
                 let painelHtml = `
                 <div>
                 <div class="painel" ondrop="drop_handler(event, ${panel[i].panelId});" ondragover="dragover_handler(event)">
-                    <div class="header-painel">
+                    <div class="input-transform header-panel">
                         <input value="A Fazer" />
                         <i class="fas fa-ellipsis-h" onclick="popupShow(${panel[i].panelId})"></i>
                         <div id="poopup_${panel[i].panelId}" class="pop-up">
@@ -76,7 +76,7 @@ function searchPanel() {
                     <div class="footer-content">
                         <div class="footer-painel">
                             <i class="fas fa-plus-circle icon-circle"></i>
-                            <button class="btn-general" onClick="addTask(${panel[i].panelId})">Adicionar cartão</button>
+                            <button class="btn-general" onClick="addTask(${panel[i].panelId})" >Adicionar cartão</button>
                         </div>
                         <div class="icon-add">
                             <i class="fas fa-door-open"></i>
@@ -96,7 +96,7 @@ function addPainel() {
         let painelHtml = `
         <div>
         <div class="painel" ondrop="drop_handler(event, ${i});" ondragover="dragover_handler(event)">
-            <div class="header-painel">
+            <div class="input-transform header-panel">
                 <input value="A Fazer" />
                 <i class="fas fa-ellipsis-h" onclick="popupShow(${i})"></i>
                 <div id="poopup_${i}" class="pop-up">
@@ -120,7 +120,7 @@ function addPainel() {
             <div class="footer-content">
                 <div class="footer-painel">
                     <i class="fas fa-plus-circle icon-circle"></i>
-                    <button class="btn-general" onClick="addTask(${i})">Adicionar cartão</button>
+                    <button class="btn-general" onClick="addTask(${i})" data-toggle="modal" data-target="#exampleModal">Adicionar cartão</button>
                 </div>
                 <div class="icon-add">
                     <i class="fas fa-door-open"></i>
