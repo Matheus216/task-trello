@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace trello.api.Repositories.Painting
+namespace trello.api.Repositories
 {
     public interface IRepository<T>
     {

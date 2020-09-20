@@ -1,6 +1,6 @@
 using AutoMapper;
 using trello.api.Models;
-using trello.api.Repositories.Paiting;
+using trello.api.Repositories.Painting;
 
 namespace trello.api.Service.Painting
 {

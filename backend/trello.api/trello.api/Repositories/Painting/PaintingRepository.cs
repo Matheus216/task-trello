@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using trello.api.Repositories.Entities.Context;
 using trello.api.Repositories.Entities.Models;
 
-namespace trello.api.Repositories.Paiting
+namespace trello.api.Repositories.Painting
 {
     public class PaintingRepository : IPaintingRepository
     {

@@ -6,10 +6,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using trello.api.Models;
+using trello.api.Repositories.Check;
 using trello.api.Repositories.Entities.Context;
 using trello.api.Repositories.Entities.Models;
-using trello.api.Repositories.Paiting;
+using trello.api.Repositories.Painting;
+using trello.api.Repositories.Panel;
 using trello.api.Repositories.Task;
+using trello.api.Repositories.User;
 using trello.api.Service.Painting;
 using trello.api.Service.Task;
 
@@ -24,7 +27,6 @@ namespace trello.api
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
@@ -37,7 +39,6 @@ namespace trello.api
             ); 
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
@@ -64,6 +65,9 @@ namespace trello.api
             services.AddTransient<IPaintingService, PaintingService>();
             services.AddTransient<ITaskService, TaskService>();
             services.AddTransient<ITaskRepository, TaskRepository>();
+            services.AddTransient<ICheckRepository, CheckRepository>();
+            services.AddTransient<IPanelRepository, PanelRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
         }
 
         public void ImplementMapper(IServiceCollection services)
