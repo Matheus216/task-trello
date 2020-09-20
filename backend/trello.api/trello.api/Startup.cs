@@ -13,6 +13,7 @@ using trello.api.Repositories.Painting;
 using trello.api.Repositories.Panel;
 using trello.api.Repositories.Task;
 using trello.api.Repositories.User;
+using trello.api.Service.Check;
 using trello.api.Service.Painting;
 using trello.api.Service.Task;
 
@@ -61,13 +62,15 @@ namespace trello.api
 
         public void ImplementDI(IServiceCollection services)
         {
-            services.AddTransient<IPaintingRepository, PaintingRepository>();
-            services.AddTransient<IPaintingService, PaintingService>();
-            services.AddTransient<ITaskService, TaskService>();
-            services.AddTransient<ITaskRepository, TaskRepository>();
             services.AddTransient<ICheckRepository, CheckRepository>();
+            services.AddTransient<ITaskRepository, TaskRepository>();
             services.AddTransient<IPanelRepository, PanelRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IPaintingRepository, PaintingRepository>();
+            
+            services.AddTransient<ICheckService, CheckService>();
+            services.AddTransient<ITaskService, TaskService>();
+            services.AddTransient<IPaintingService, PaintingService>();
         }
 
         public void ImplementMapper(IServiceCollection services)
