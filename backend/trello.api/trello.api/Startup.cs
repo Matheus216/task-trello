@@ -12,6 +12,7 @@ using trello.api.Repositories.Entities.Models;
 using trello.api.Repositories.Painting;
 using trello.api.Repositories.Panel;
 using trello.api.Repositories.Task;
+using trello.api.Repositories.TaskCheck;
 using trello.api.Repositories.User;
 using trello.api.Service.Check;
 using trello.api.Service.Painting;
@@ -67,6 +68,7 @@ namespace trello.api
             services.AddTransient<IPanelRepository, PanelRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IPaintingRepository, PaintingRepository>();
+            services.AddTransient<ITaskCheckRepository, TaskCheckRepository>();
             
             services.AddTransient<ICheckService, CheckService>();
             services.AddTransient<ITaskService, TaskService>();
