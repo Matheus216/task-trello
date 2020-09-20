@@ -6,5 +6,6 @@ namespace trello.api.Repositories.Entities.Models
     public class TaskEntityModel : TaskAbstractModel
     {
         public PanelEntityModel Panel { get; set; }
+        public UserEntityModel User { get; set; }
     }
 }

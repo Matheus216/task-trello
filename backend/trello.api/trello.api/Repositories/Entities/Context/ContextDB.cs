@@ -14,6 +14,8 @@ namespace trello.api.Repositories.Entities.Context
         public DbSet<PaintingEntityModel> Paitings { get; set; }
         public DbSet<PanelEntityModel> Panels { get; set; }
         public DbSet<TaskEntityModel> Task { get; set; }
+        public DbSet<UserEntityModel> User { get; set; }
+        public DbSet<TaskCheckEntityModel> TaskCheck { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -28,6 +30,12 @@ namespace trello.api.Repositories.Entities.Context
             modelBuilder.Entity<TaskEntityModel>()
                 .ToTable("Task")
                 .HasKey(x => x.TaskId); 
+            
+            modelBuilder.Entity<UserEntityModel>()
+                .ToTable("User")
+                .HasKey(x => x.UserId); 
+
+            modelBuilder.Entity<TaskCheckEntityModel>().HasKey(x => new { x.TaskId, x.CheckId });
         }
 
           protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
