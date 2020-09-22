@@ -19,15 +19,37 @@ namespace trello.api.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IList<CheckModel>> Get()
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                var response = _service.Get();
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message); 
+            }
         }
 
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<CheckModel> Get(int id)
         {
-            return "value";
+            try
+            {
+                if (id == 0) {
+                    throw new Exception("id inválido.");
+                }
+
+                var response = _service.Get(id);
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message); 
+            }
         }
 
         [HttpPost("Save")]
@@ -48,14 +70,23 @@ namespace trello.api.Controllers
             }
         }
 
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult Delete(int id)
         {
+            try
+            {
+                if (id == 0){
+                    throw new Exception("id inválido.");
+                }
+
+                _service.Remove(id);
+                
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message); 
+            }
         }
     }
 }

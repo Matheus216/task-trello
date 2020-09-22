@@ -26,6 +26,10 @@ namespace trello.api.Repositories.Check
             var _search = _context.Check
                 .ToList(); 
 
+            if (_search == null) {
+                _search = new List<CheckEntityModel>(); 
+            }
+
             return _search; 
         }
 

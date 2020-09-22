@@ -76,12 +76,16 @@ namespace trello.api
         public void ImplementMapper(IServiceCollection services)
         {
             var config = new AutoMapper.MapperConfiguration(config => {
+                
                 config.CreateMap<PaintingModel, PaintingEntityModel>();
                 config.CreateMap<PanelModel, PanelEntityModel>();
                 config.CreateMap<TaskModel, TaskEntityModel>();
+                config.CreateMap<CheckModel, CheckEntityModel>();
+
                 config.CreateMap<PaintingEntityModel, PaintingModel>();
                 config.CreateMap<PanelEntityModel, PanelModel>();
                 config.CreateMap<TaskEntityModel, TaskModel>();
+                config.CreateMap<CheckEntityModel, CheckModel>();
             });
 
             IMapper mapper = config.CreateMapper();
