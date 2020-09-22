@@ -5,6 +5,5 @@ namespace trello.api.Repositories.Entities.Models
 {
     public class CheckEntityModel : CheckAbstractModel
     {
-       public ICollection<TaskCheckEntityModel> TaskCheck { get; set; }
     }
 }

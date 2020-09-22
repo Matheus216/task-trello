@@ -8,6 +8,6 @@ namespace trello.api.Repositories.Entities.Models
     {
         public PanelEntityModel Panel { get; set; }
         public ICollection<TaskUserEntityModel> TaskUser { get; set; }
-        public ICollection<TaskCheckEntityModel> TaskCheck { get; set; }
+        public List<CheckEntityModel> Check { get; set; }
     }
 }

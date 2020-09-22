@@ -16,7 +16,6 @@ namespace trello.api.Repositories.Entities.Context
         public DbSet<TaskEntityModel> Task { get; set; }
         public DbSet<UserEntityModel> User { get; set; }
         public DbSet<CheckEntityModel> Check { get; set; }
-        public DbSet<TaskCheckEntityModel> TaskCheck { get; set; }
         public DbSet<TaskUserEntityModel> TaskUser { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -43,10 +42,6 @@ namespace trello.api.Repositories.Entities.Context
             
             modelBuilder.Entity<TaskUserEntityModel>()
                 .HasKey(x => new { x.TaskId, x.UserId });
-
-            modelBuilder.Entity<TaskCheckEntityModel>()
-                .HasKey(e => new { e.TaskId, e.CheckId });
-
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
