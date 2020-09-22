@@ -62,7 +62,7 @@ namespace trello.api.Controllers
 
                 var response = _service.Save(check);
 
-                return Ok();
+                return Ok(response);
             }
             catch (Exception ex)
             {
@@ -81,7 +81,7 @@ namespace trello.api.Controllers
 
                 _service.Remove(id);
                 
-                return Ok();
+                return Ok( new { removed = true } );
             }
             catch (Exception ex)
             {
