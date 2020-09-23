@@ -29,11 +29,8 @@ namespace trello.api.Service.Task
 
         public bool IsValid(TaskModel task)
         {
-            if (task.DateBegin == DateTime.MinValue)
-                throw new Exception("Data de início inválida..");
-                
-            if (String.IsNullOrEmpty(task.Estimated))
-                throw new Exception("Informar a estimativa");
+            if (String.IsNullOrEmpty(task.Title))
+                throw new Exception("É necessário incluir um titulo");
 
             return true; 
         }

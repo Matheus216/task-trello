@@ -81,11 +81,13 @@ namespace trello.api
                 config.CreateMap<PanelModel, PanelEntityModel>();
                 config.CreateMap<TaskModel, TaskEntityModel>();
                 config.CreateMap<CheckModel, CheckEntityModel>();
+                config.CreateMap<UserModel, UserEntityModel>();
 
                 config.CreateMap<PaintingEntityModel, PaintingModel>();
                 config.CreateMap<PanelEntityModel, PanelModel>();
                 config.CreateMap<TaskEntityModel, TaskModel>();
                 config.CreateMap<CheckEntityModel, CheckModel>();
+                config.CreateMap<UserEntityModel, UserModel>();
             });
 
             IMapper mapper = config.CreateMapper();
