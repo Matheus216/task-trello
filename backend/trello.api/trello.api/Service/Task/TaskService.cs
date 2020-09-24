@@ -1,18 +1,19 @@
+using trello.api.Repositories.Entities.Models;
+using trello.api.Repositories.TaskUser;
+using trello.api.Repositories.Task;
+using trello.api.Models;
+using AutoMapper;
 using System;
 using System.Collections.Generic;
-using AutoMapper;
-using trello.api.Models;
-using trello.api.Repositories.Entities.Models;
-using trello.api.Repositories.Task;
-using trello.api.Repositories.TaskUser;
 
 namespace trello.api.Service.Task
 {
     public class TaskService : ITaskService
     {
-        private readonly ITaskRepository _repository;
         private readonly ITaskUserRepository _repositoryTaskUser;
+        private readonly ITaskRepository _repository;
         private readonly IMapper _mapper;
+
         public TaskService(ITaskRepository repository, ITaskUserRepository repositoryTaksUser, IMapper mapper)
         {
             _repository = repository;
@@ -23,11 +24,10 @@ namespace trello.api.Service.Task
         public TaskModel Save(TaskModel task)
         {
             var taskInsered = new TaskModel();
+            IsValid(task);
 
             if (task.TaskId == 0)
             {
-                IsValid(task);
-
                 var entity = _mapper.Map<TaskEntityModel>(task);
                 taskInsered = _mapper.Map<TaskModel>(_repository.Insert(entity));
 
@@ -37,10 +37,15 @@ namespace trello.api.Service.Task
             }
             else
             {
+                var entity = _mapper.Map<TaskEntityModel>(task);
+                taskInsered = _mapper.Map<TaskModel>(_repository.Update(entity));
 
+                task.TaskId = taskInsered.TaskId;
+
+                SaveTaskUser(task);
             }
 
-            return insered;
+            return taskInsered;
         }
         private void SaveTaskUser(TaskModel task)
         {
@@ -71,12 +76,12 @@ namespace trello.api.Service.Task
             return true;
         }
 
-        public TaskModel Remove(int id)
+        public void Remove(int id)
         {
-            throw new NotImplementedException();
+            _repository.Delete(id); 
         }
 
-        public TaskModel Get()
+        public IList<TaskModel> Get()
         {
             throw new NotImplementedException();
         }

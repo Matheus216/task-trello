@@ -40,7 +40,7 @@ namespace trello.api.Controllers
                     throw new Exception("Parametros Inválidos");
                 }
 
-                var taskCreated = _service.Insert(task); 
+                var taskCreated = _service.Save(task); 
 
                 return Ok(taskCreated); 
             }
