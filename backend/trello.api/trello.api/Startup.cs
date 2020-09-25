@@ -17,6 +17,7 @@ using trello.api.Repositories.User;
 using trello.api.Service.Check;
 using trello.api.Service.Painting;
 using trello.api.Service.Task;
+using trello.api.Service.User;
 
 namespace trello.api
 {
@@ -73,6 +74,7 @@ namespace trello.api
             services.AddTransient<ICheckService, CheckService>();
             services.AddTransient<ITaskService, TaskService>();
             services.AddTransient<IPaintingService, PaintingService>();
+            services.AddTransient<IUserService, UserService>();
         }
 
         public void ImplementMapper(IServiceCollection services)

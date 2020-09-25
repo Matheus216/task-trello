@@ -53,8 +53,8 @@ namespace trello.api.Controllers
             }
         }
 
-        [HttpPost]
-        public ActionResult Post([FromBody] UserModel user)
+        [HttpPost("Save")]
+        public ActionResult Save([FromBody] UserModel user)
         {
             try
             {
