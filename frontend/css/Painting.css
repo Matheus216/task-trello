@@ -70,6 +70,7 @@ body{
         transition:  0.5s;
     }
 
+
 .footer-content{
     margin: 10px 10px;
     display: inline-block;
@@ -170,7 +171,7 @@ body{
 }
 
 .modal-header { 
-    background: #0b5818
+    background: #246f8c
 }
 
 .modal-header input{ 

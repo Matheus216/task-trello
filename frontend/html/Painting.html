@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trello</title>
 
-    <link rel="stylesheet" href="../css/Panel.css">
+    <link rel="stylesheet" href="../css/Painting.css">
 
     <script src="https://kit.fontawesome.com/af5621599b.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -19,12 +19,12 @@
         <div id="painel" class="content-grid">
         </div>
         <div id="externo">
-            <div class="btn-externo" onclick="addPainel()"   >
+            <div class="btn-externo" onclick="addPainel()">
                 <i class="fas fa-plus-circle icon-circle"></i>
                 <button class="btn-general" >Adicionar painel</button>
             </div>
         </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modal-main" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
                 <div class="modal-header">
@@ -37,19 +37,34 @@
                 </div>
                 <div class="modal-body">
                   <form>
-                    <div class="form-group">
-                      <label for="recipient-name" class="col-form-label">Title</label>
-                      <input type="text" class="form-control" id="title-input-task">
+                    <div>
+                      <label for="title-task" >Titulo</label>
+                      <input type="text" id="title-task">
                     </div>
-                    <div class="form-group">
-                      <label for="message-text" class="col-form-label">Message:</label>
-                      <textarea class="form-control" id="message-text"></textarea>
+                    <div>
+                      <label for="message-text">Decrição</label>
+                      <textarea  id="message-text"></textarea>
+                    </div>
+
+                    <div>
+                      <label for="dateBegin" >Data Início</label>
+                      <input type="date" id="dateBegin">
+                    </div>
+
+                    <div>
+                      <label for="dateFinished">Data Termino</label>
+                      <input type="date" id="dateFinished">
+                    </div>
+
+                    <div>
+                      <label for="estimated">Estimativa</label>
+                      <textarea  id="estimated"></textarea>
                     </div>
                   </form>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Send message</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                  <button type="button" class="btn btn-primary">Salvar Tarefa</button>
                 </div>
               </div>
             </div>
@@ -57,7 +72,7 @@
     </div>
 
     <script src="../js/httpRequest.js"></script>
-    <script src="../js/index.js"></script>
+    <script src="../js/Painting.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

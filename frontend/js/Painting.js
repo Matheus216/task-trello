@@ -4,6 +4,8 @@ var urlLocal = "http://localhost:5000/api/";
 
 initializer();
 
+const principle = [] ; 
+
 function initializer() {
     searchPanel(); 
 }
@@ -120,7 +122,7 @@ function addPainel() {
             <div class="footer-content">
                 <div class="footer-painel">
                     <i class="fas fa-plus-circle icon-circle"></i>
-                    <button class="btn-general" onClick="addTask(${i})" data-toggle="modal" data-target="#exampleModal">Adicionar cartão</button>
+                    <button class="btn-general" onClick="addTask(${i})" data-toggle="modal" data-target="#modal-main">Adicionar cartão</button>
                 </div>
                 <div class="icon-add">
                     <i class="fas fa-door-open"></i>
