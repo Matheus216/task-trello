@@ -16,6 +16,7 @@ body{
 .grid {
     display: grid;
     grid-template-columns: 400px 350px;
+    padding: 0;
 }
 
 .painel {
@@ -216,9 +217,30 @@ body{
     }
 
 .group-modal {
-    margin-left: 17px;
+    margin-top: 17px;
 }
 
 .group-modal  label{
     display: block;
+}
+
+.modal-content-task{
+    padding: 0px 17px 17px 17px;
+}
+
+.btn-primary{
+    background-color: #246f8c !important;
+}
+
+    .btn-primary:hover{
+        color: #fff;
+        background-color: #2080a5 !important;
+        border-color: #0062cc;
+    }
+
+.input-icon{
+    margin-left: -32px;
+    color: #196b73;
+    border-left: 1px solid #2080a5;
+    padding-left: 4px;
 }
