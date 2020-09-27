@@ -27,40 +27,36 @@
         <div class="modal fade" id="modal-main" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header" style="margin-bottom: 17px;">
                   <div class="input-transform">
-                      <input type="text" value="Cadastro de tarefas">
+                      <input type="text" id="title-task" value="Cadastro de tarefas">
                   </div>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body">
-                  <form>
-                    <div>
-                      <label for="title-task" >Titulo</label>
-                      <input type="text" id="title-task">
-                    </div>
-                    <div>
-                      <label for="message-text">Decrição</label>
-                      <textarea  id="message-text"></textarea>
-                    </div>
 
-                    <div>
+                <div class="group-modal">
+                  <label for="message-text">Decrição</label>
+                  <textarea class="input-style input-style-textarea" id="message-text"></textarea>
+                </div>
+
+                <div class="modal-body grid">
+                    <div  class="group-modal">
                       <label for="dateBegin" >Data Início</label>
-                      <input type="date" id="dateBegin">
+                      <input type="date" class="" id="dateBegin">
                     </div>
 
-                    <div>
+                    <div class="group-modal">
+                      <label for="estimated">Estimativa</label>
+                      <input class="input-style"  id="estimated"></input>
+                    </div>
+
+                    <div class="group-modal">
                       <label for="dateFinished">Data Termino</label>
                       <input type="date" id="dateFinished">
                     </div>
-
-                    <div>
-                      <label for="estimated">Estimativa</label>
-                      <textarea  id="estimated"></textarea>
-                    </div>
-                  </form>
+                    
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>

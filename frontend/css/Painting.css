@@ -13,6 +13,11 @@ body{
     display: flex;
 }
 
+.grid {
+    display: grid;
+    grid-template-columns: 400px 350px;
+}
+
 .painel {
     width: 272px;
     background: #ebecf0;
@@ -180,4 +185,40 @@ body{
     font-size: 19px;
     letter-spacing: 1px;
     width: 500px;
+}
+
+.input-style { 
+    border: 1px solid #246f8c99;
+    border-radius: 5px;
+    transition: 0.4s;
+    padding: 14px;
+    font-size: 13px;
+}
+
+.input-style-textarea {
+    width: 700px;
+    height: 90px;
+}
+
+.input-style-input {
+    height: 24px;
+}
+
+    .input-style:focus{
+        border: 1px solid #246f8c;
+        text-transform: none;
+        box-shadow: inset 0 0 5px #0b40ff91;
+        transition: 0.4s;
+    }
+
+    .input-style:focus{
+        outline: 0;
+    }
+
+.group-modal {
+    margin-left: 17px;
+}
+
+.group-modal  label{
+    display: block;
 }
