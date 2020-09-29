@@ -24,7 +24,7 @@
     <div id="painel" class="content-grid">
     </div>
     <div id="externo">
-      <div class="btn-externo" onclick="addPainel()">
+      <div class="btn-externo" onclick="window.PaintingService.addPanel()">
         <i class="fas fa-plus-circle icon-circle"></i>
         <button class="btn-general">Adicionar painel</button>
       </div>
@@ -48,13 +48,13 @@
             <hr />
             <div class="grid">
               <div class="group-modal">
-                <label for="dateBegin" data-toggle="datapicker">Data Início</label>
+                <label data-toggle="datapicker">Data Início</label>
                 <input type="text" class="input-style input-style-input input-date" id="dateBegin">
                 <i class="far fa-calendar-alt input-icon"></i>
               </div>
 
               <div class="group-modal">
-                <label for="dateFinished">Data Termino</label>
+                <label >Data Termino</label>
                 <input type="text" class="input-style input-style-input input-date" id="dateFinished">
                 <i class="far fa-calendar-alt input-icon"></i>
               </div>
