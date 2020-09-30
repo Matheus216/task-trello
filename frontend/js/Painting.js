@@ -5,7 +5,7 @@ var config = {
 };
 
 window.PaintingService = {
-    initializer: function () {
+    initializer: function () { vn
         window.PaintingService.searchPanel();
         $(".input-date").datepicker();
     },
@@ -41,7 +41,7 @@ window.PaintingService = {
             success: function (response) {
                 var panel = response.panel;
                 for (let i = 0; i < panel.length; i++) {
-                    let painelHtml = `
+                    document.getElementById("painel").innerHTML += `
                     <div>
                     <div class="painel" 
                         ondrop="window.PaintingService.drop_handler(event, ${panel[i].panelId});" 
@@ -79,8 +79,7 @@ window.PaintingService = {
                                 <i class="fas fa-door-open"></i>
                             </div>
                         </div>
-                    </div></div>`
-                    document.getElementById("painel").innerHTML += painelHtml;
+                    </div></div>`;
                 }
             }
         });
@@ -159,4 +158,5 @@ window.PaintingService = {
         config.idTask++;
     }
 };
+
 window.PaintingService.initializer(); 
