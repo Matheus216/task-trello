@@ -2,21 +2,21 @@ using System.Collections.Generic;
 using AutoMapper;
 using trello.api.Models;
 using trello.api.Repositories.Panel;
-using trello.api.Repositories.Task;
+using trello.api.Service.Task;
 
 namespace trello.api.Service.Panel
 {
     public class PanelService : IPanelService
     {
         private readonly IPanelRepository _repository;
-        private readonly ITaskRepository _taskRepository;
+        private readonly ITaskService _taskService;
         public IMapper _mapper { get; set; }
 
-        public PanelService(IPanelRepository repository, IMapper mapper, ITaskRepository taskRepository)
+        public PanelService(IPanelRepository repository, IMapper mapper, ITaskService taskService)
         {
             _repository = repository;
             _mapper = mapper; 
-            _taskRepository = taskRepository; 
+            _taskService = taskService; 
         }
 
         public IList<PanelModel> Get()
@@ -25,7 +25,7 @@ namespace trello.api.Service.Panel
 
             foreach (var x in panels)
             {
-                x.Task =  _mapper.Map<List<TaskModel>>(_taskRepository.GetByPanelId(x.PanelId));
+                x.Task =  _taskService.GetByPanelId(x.PanelId); 
             }
 
             return panels;
@@ -37,7 +37,7 @@ namespace trello.api.Service.Panel
 
             foreach (var x in search)
             {
-                x.Task =  _mapper.Map<List<TaskModel>>(_taskRepository.GetByPanelId(x.PanelId));
+                x.Task =  _taskService.GetByPanelId(x.PanelId); 
             }
 
             return search; 
