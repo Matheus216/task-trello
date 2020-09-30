@@ -1,23 +1,11 @@
-using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using trello.api.Models;
-using trello.api.Repositories.Check;
+using trello.api.Configuration;
 using trello.api.Repositories.Entities.Context;
-using trello.api.Repositories.Entities.Models;
-using trello.api.Repositories.Painting;
-using trello.api.Repositories.Panel;
-using trello.api.Repositories.Task;
-using trello.api.Repositories.TaskUser;
-using trello.api.Repositories.User;
-using trello.api.Service.Check;
-using trello.api.Service.Painting;
-using trello.api.Service.Task;
-using trello.api.Service.User;
 
 namespace trello.api
 {
@@ -33,9 +21,10 @@ namespace trello.api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            
-            ImplementDI(services); 
-            ImplementMapper(services);
+
+            services.ImplementDI();
+
+            services.ImplementDI();
 
             services.AddDbContext<ContextDB>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("stringConnection"))
@@ -60,43 +49,6 @@ namespace trello.api
             {
                 endpoints.MapControllers();
             });
-        }
-
-        public void ImplementDI(IServiceCollection services)
-        {
-            services.AddTransient<ICheckRepository, CheckRepository>();
-            services.AddTransient<ITaskRepository, TaskRepository>();
-            services.AddTransient<IPanelRepository, PanelRepository>();
-            services.AddTransient<IUserRepository, UserRepository>();
-            services.AddTransient<IPaintingRepository, PaintingRepository>();
-            services.AddTransient<ITaskUserRepository, TaskUserRepository>();
-            
-            services.AddTransient<ICheckService, CheckService>();
-            services.AddTransient<ITaskService, TaskService>();
-            services.AddTransient<IPaintingService, PaintingService>();
-            services.AddTransient<IUserService, UserService>();
-        }
-
-        public void ImplementMapper(IServiceCollection services)
-        {
-            var config = new AutoMapper.MapperConfiguration(config => {
-                
-                config.CreateMap<PaintingModel, PaintingEntityModel>();
-                config.CreateMap<PanelModel, PanelEntityModel>();
-                config.CreateMap<TaskModel, TaskEntityModel>();
-                config.CreateMap<CheckModel, CheckEntityModel>();
-                config.CreateMap<UserModel, UserEntityModel>();
-
-                config.CreateMap<PaintingEntityModel, PaintingModel>();
-                config.CreateMap<PanelEntityModel, PanelModel>();
-                config.CreateMap<TaskEntityModel, TaskModel>();
-                config.CreateMap<CheckEntityModel, CheckModel>();
-                config.CreateMap<UserEntityModel, UserModel>();
-            });
-
-            IMapper mapper = config.CreateMapper();
-
-            services.AddSingleton(mapper);
         }
     }
 }
