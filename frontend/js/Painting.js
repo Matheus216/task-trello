@@ -2,35 +2,28 @@ var config = {
     idAtual: 1,
     idTask: 1,
     urlLocal: "http://localhost:5000/api/"
-}
+};
 
 window.PaintingService = {
     initializer: function () {
-        searchPanel();
-        $('.input-date').datepicker();
+        window.PaintingService.searchPanel();
+        $(".input-date").datepicker();
     },
 
     dragstart_handler: function (ev) {
-        //Determina o efeito de arraste podendo ser copy / move / link
-        ev.dataTransfer.setData('text/plain', ev.target.id);
+        ev.dataTransfer.setData("text/plain", ev.target.id);
         ev.dataTransfer.dropEffect = "move";
     },
 
     dragover_handler: function (ev) {
         ev.preventDefault();
-
-        //Define um dropEffect para ser do tipo move
         ev.dataTransfer.dropEffect = "move";
     },
 
     drop_handler: function (ev, id) {
         ev.preventDefault();
-
-        //Pega o id do alvo e adiciona o elemento que foi movido para o DOM do alvo
-
-        var data = ev.dataTransfer.getData('text');
-        let element = document.getElementById(`container-task_${id}`)
-
+        var data = ev.dataTransfer.getData("text");
+        var element = document.getElementById(`container-task_${id}`);
         element.appendChild(document.getElementById(data));
     },
 
@@ -44,14 +37,15 @@ window.PaintingService = {
             type: "GET",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-            url: config.urlLocal + 'painting',
+            url: config.urlLocal + "painting",
             success: function (response) {
-                let panel = response.panel;
-
+                var panel = response.panel;
                 for (let i = 0; i < panel.length; i++) {
                     let painelHtml = `
                     <div>
-                    <div class="painel" ondrop="window.PaintingService.drop_handler(event, ${panel[i].panelId});" ondragover="window.PaintingService.dragover_handler(event)">
+                    <div class="painel" 
+                        ondrop="window.PaintingService.drop_handler(event, ${panel[i].panelId});" 
+                        ondragover="window.PaintingService.dragover_handler(event)">
                         <div class="input-transform header-panel">
                             <input value="A Fazer" />
                             <i class="fas fa-ellipsis-h" onclick="window.PaintingService.popupShow(${panel[i].panelId})"></i>
@@ -86,18 +80,18 @@ window.PaintingService = {
                             </div>
                         </div>
                     </div></div>`
-                    document.getElementById('painel').innerHTML += painelHtml;
+                    document.getElementById("painel").innerHTML += painelHtml;
                 }
             }
         });
     },
 
     addPanel: function () {
-        let body = document.getElementById('painel');
+        var body = document.getElementById("painel");
         for (let i = config.idAtual; i < (config.idAtual + 1); i++) {
             let painelHtml = `
             <div>
-            <div class="painel" ondrop="window.PaintingService..drop_handler(event, ${i});" ondragover="window.PaintingService.dragover_handler(event)">
+            <div class="painel" ondrop="window.PaintingService.drop_handler(event, ${i});" ondragover="window.PaintingService.dragover_handler(event)">
                 <div class="input-transform header-panel">
                     <input value="A Fazer" />
                     <i class="fas fa-ellipsis-h" onclick="window.PaintingService.popupShow(${i})"></i>
@@ -135,29 +129,25 @@ window.PaintingService = {
         }
 
         config.idAtual++;
-
         return false;
     },
 
-
     popupShow: function (id) {
-        let element = document.getElementById(`poopup_${id}`);
-
-        if (element.style.display == 'none') {
-            element.style.display = 'inline-block'
+        var element = document.getElementById(`poopup_${id}`);
+        if (element.style.display == "none") {
+            element.style.display = "inline-block"
         } else {
-            element.style.display = 'none'
+            element.style.display = "none"
         }
     },
     
     closePop: function (id) {
-        let element = document.getElementById(`poopup_${id}`);
-        element.style.display = 'none'
+        var element = document.getElementById(`poopup_${id}`);
+        element.style.display = "none";
     },
     
     addTask: function (id) {
-        let element = document.getElementById(`container-task_${id}`);
-
+        var element = document.getElementById(`container-task_${id}`);
         element.innerHTML += `
         <canvas 
             id="task_${config.idTask}" 
@@ -168,6 +158,5 @@ window.PaintingService = {
         </canvas>`;
         config.idTask++;
     }
-}
-
+};
 window.PaintingService.initializer(); 
