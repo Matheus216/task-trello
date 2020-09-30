@@ -22,8 +22,7 @@ namespace trello.api
         {
             services.AddControllers();
 
-            services.ImplementDI();
-
+            services.ImplementMapper();
             services.ImplementDI();
 
             services.AddDbContext<ContextDB>(options =>

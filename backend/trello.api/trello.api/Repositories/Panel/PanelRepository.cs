@@ -41,6 +41,22 @@ namespace trello.api.Repositories.Panel
             return searchObj;
         }
 
+        public IList<PanelEntityModel> GetByPaitingId(int id)
+        {
+            var search = new List<PanelEntityModel>(); 
+
+            search = _context.Panels
+                .Where(x => x.PaintingId == id)
+                .ToList(); 
+
+            if (search == null) 
+            {
+                search = new List<PanelEntityModel>(); 
+            }
+
+            return search; 
+        }
+
         public PanelEntityModel Insert(PanelEntityModel objIn)
         {
             var insered = _context.Panels.Add(objIn);

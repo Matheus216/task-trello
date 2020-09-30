@@ -39,6 +39,22 @@ namespace trello.api.Repositories.Task
             return searchTask;             
         }
 
+        public IList<TaskEntityModel> GetByPanelId(int id)
+        {
+            var search = new List<TaskEntityModel>();
+            
+            search = context.Task
+                .Where(x => x.PanelId == id)
+                .ToList();
+
+            if (search == null) 
+            {
+                search = new List<TaskEntityModel>();
+            }
+
+            return search; 
+        }
+
         public TaskEntityModel Insert(TaskEntityModel task)
         {
             var insered = context.Task.Add(task);

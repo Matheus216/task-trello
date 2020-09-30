@@ -5,7 +5,7 @@ var config = {
 };
 
 window.PaintingService = {
-    initializer: function () { vn
+    initializer: function () { 
         window.PaintingService.searchPanel();
         $(".input-date").datepicker();
     },
