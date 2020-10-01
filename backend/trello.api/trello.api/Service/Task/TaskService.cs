@@ -22,6 +22,7 @@ namespace trello.api.Service.Task
             _repository = repository;
             _mapper = mapper;
             _repositoryTaskUser = repositoryTaksUser;
+            _userRepository = userRepository;
         }
 
         public TaskModel Save(TaskModel task)
@@ -104,9 +105,8 @@ namespace trello.api.Service.Task
 
                 foreach (var z in taskUser)
                 {
-                    x.User.Add(
-                        _mapper.Map<UserModel>(_userRepository.GetById(z.UserId))
-                    );
+                    var aux = _mapper.Map<UserModel>(_userRepository.GetById(z.UserId)); 
+                    x.User.Add(aux);
                 }                
             }
 
