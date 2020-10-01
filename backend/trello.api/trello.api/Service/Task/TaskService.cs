@@ -5,6 +5,7 @@ using trello.api.Models;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
+using trello.api.Repositories.User;
 
 namespace trello.api.Service.Task
 {
@@ -14,7 +15,9 @@ namespace trello.api.Service.Task
         private readonly ITaskRepository _repository;
         private readonly IMapper _mapper;
 
-        public TaskService(ITaskRepository repository, ITaskUserRepository repositoryTaksUser, IMapper mapper)
+        public IUserRepository _userRepository { get; set; }
+
+        public TaskService(ITaskRepository repository, ITaskUserRepository repositoryTaksUser, IMapper mapper, IUserRepository userRepository)
         {
             _repository = repository;
             _mapper = mapper;
@@ -94,6 +97,18 @@ namespace trello.api.Service.Task
         public List<TaskModel> GetByPanelId(int id)
         {
             var search = _mapper.Map<List<TaskModel>>(_repository.GetByPanelId(id));
+
+            foreach (var x in search)
+            {
+                var taskUser = _repositoryTaskUser.GetByTaskId(x.TaskId); 
+
+                foreach (var z in taskUser)
+                {
+                    x.User.Add(
+                        _mapper.Map<UserModel>(_userRepository.GetById(z.UserId))
+                    );
+                }                
+            }
 
             return search;  
         }
