@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using AutoMapper;
 using trello.api.Models;
+using trello.api.Repositories.Entities.Models;
 using trello.api.Repositories.Panel;
 using trello.api.Service.Task;
 
@@ -45,7 +46,10 @@ namespace trello.api.Service.Panel
 
         public PanelModel Save(PanelModel panel)
         {
-            throw new System.NotImplementedException();
+            var entityPanel = _mapper.Map<PanelEntityModel>(panel); 
+            var panelInsered = _mapper.Map<PanelModel>(_repository.Insert(entityPanel));
+
+            return panelInsered;
         }
 
         public bool Remove(int id)

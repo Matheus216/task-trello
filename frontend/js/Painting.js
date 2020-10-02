@@ -82,7 +82,7 @@ window.PaintingService = {
                     </div></div>`;
 
 
-                    panel.task.forEach(element => {
+                    panel[i].task.forEach(element => {
                         window.PaintingService.addTask(element.taskId); 
                     });
                 }
@@ -92,48 +92,24 @@ window.PaintingService = {
     },
 
     addPanel: function () {
-        var body = document.getElementById("painel");
-        for (let i = config.idAtual; i < (config.idAtual + 1); i++) {
-            let painelHtml = `
-            <div>
-            <div class="painel" ondrop="window.PaintingService.drop_handler(event, ${i});" ondragover="window.PaintingService.dragover_handler(event)">
-                <div class="input-transform header-panel">
-                    <input value="A Fazer" />
-                    <i class="fas fa-ellipsis-h" onclick="window.PaintingService.popupShow(${i})"></i>
-                    <div id="poopup_${i}" class="pop-up">
-                        <div>
-                            <h4>Ações</h4>
-                            <i class="fas fa-times" onclick="window.PaintingService.closePop(${i})"></i>
-                        </div>
-                        <hr />
-                        <ul>
-                            <li>Adicionar cartão..</li>
-                            <li>Copiar Lista..</li>
-                            <li>Mover Lista..</li>
-                            <li>Seguir..</li>
-                        </ul>
-                        <hr />
-                    </div>
-                </div>
-                <div id="container-task_${i}" ondrop="window.PaintingService.drop_handler(event, ${i});" ondragover="window.PaintingService.dragover_handler(event)">
         
-                </div>
-                <div class="footer-content">
-                    <div class="footer-painel">
-                        <i class="fas fa-plus-circle icon-circle"></i>
-                        <button class="btn-general" onClick="window.PaintingService.addTask(${i})" data-toggle="modal" data-target="#modal-main">Adicionar cartão</button>
-                    </div>
-                    <div class="icon-add">
-                        <i class="fas fa-door-open"></i>
-                    </div>
-                </div>
-            </div>
-        </div>`
+        let data = { 
+            task: null,
+            description: '',
+            title: '',
+            paintingId: 1
+        };
 
-
-        }
-
-        config.idAtual++;
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            url: config.urlLocal + "panel/save",
+            data: JSON.stringify(data),
+            success: function (response) {
+                console.log(response)
+            }
+        });
         return false;
     },
 
@@ -155,13 +131,12 @@ window.PaintingService = {
         var element = document.getElementById(`container-task_${id}`);
         element.innerHTML += `
         <canvas 
-            id="task_${config.idTask}" 
+            id="task_${id}" 
             class="task-painel"  
             draggable="true" 
             ondragstart="window.PaintingService.dragstart_handler(event)";
             ondragend="window.PaintingService.dragent_handler(event)">
         </canvas>`;
-        config.idTask++;
     }
 };
 
