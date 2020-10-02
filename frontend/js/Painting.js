@@ -5,7 +5,7 @@ var config = {
 };
 
 window.PaintingService = {
-    initializer: function () { 
+    initializer: function () {
         window.PaintingService.searchPanel();
         $(".input-date").datepicker();
     },
@@ -80,7 +80,13 @@ window.PaintingService = {
                             </div>
                         </div>
                     </div></div>`;
+
+
+                    panel.task.forEach(element => {
+                        window.PaintingService.addTask(element.taskId); 
+                    });
                 }
+
             }
         });
     },
@@ -124,7 +130,7 @@ window.PaintingService = {
             </div>
         </div>`
 
-            body.innerHTML += painelHtml;
+
         }
 
         config.idAtual++;
@@ -139,12 +145,12 @@ window.PaintingService = {
             element.style.display = "none"
         }
     },
-    
+
     closePop: function (id) {
         var element = document.getElementById(`poopup_${id}`);
         element.style.display = "none";
     },
-    
+
     addTask: function (id) {
         var element = document.getElementById(`container-task_${id}`);
         element.innerHTML += `
