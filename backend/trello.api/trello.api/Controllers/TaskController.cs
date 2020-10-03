@@ -50,9 +50,23 @@ namespace trello.api.Controllers
             }
         }
 
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        public void Put([FromBody] TaskModel task)
         {
+            try
+            {
+                if (task == null) {
+                    throw new Exception("Parametros Inválidos");
+                }
+
+                _service.Save(task); 
+
+                Ok(); 
+            }
+            catch (Exception ex)
+            {
+                BadRequest(ex.Message); 
+            }
         }
 
         [HttpDelete("{id}")]

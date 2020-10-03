@@ -11,6 +11,9 @@ window.PaintingService = {
     },
 
     dragstart_handler: function (ev) {
+
+   
+
         ev.dataTransfer.setData("text/plain", ev.target.id);
         ev.dataTransfer.dropEffect = "move";
     },
@@ -25,6 +28,21 @@ window.PaintingService = {
         var data = ev.dataTransfer.getData("text");
         var element = document.getElementById(`container-task_${id}`);
         element.appendChild(document.getElementById(data));
+
+        let element = document.getElementById(ev.target.id);
+
+        let data = {
+            panelId: id,
+            taskId: ev.target.id
+        }
+       
+        $.ajax({
+            type: "PUT",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            url: config.urlLocal + "task",
+            data: JSON.stringify(data)
+        });
     },
 
     dragent_handler: function (event) {
