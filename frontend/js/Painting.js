@@ -25,15 +25,15 @@ window.PaintingService = {
 
     drop_handler: function (ev, id) {
         ev.preventDefault();
-        var data = ev.dataTransfer.getData("text");
-        var element = document.getElementById(`container-task_${id}`);
+        let data = ev.dataTransfer.getData("text");
+        let element = document.getElementById(`container-task_${id}`);
         element.appendChild(document.getElementById(data));
 
-        let element = document.getElementById(ev.target.id);
+        var regex = new RegExp('[0-9]{1,}');
 
-        let data = {
+        let dataTrasfer = {
             panelId: id,
-            taskId: ev.target.id
+            taskId: parseInt(regex.exec(data)[0])
         }
        
         $.ajax({
@@ -41,7 +41,7 @@ window.PaintingService = {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             url: config.urlLocal + "task",
-            data: JSON.stringify(data)
+            data: JSON.stringify(dataTrasfer)
         });
     },
 
