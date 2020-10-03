@@ -32,7 +32,6 @@ window.PaintingService = {
     },
 
     searchPanel: function () {
-
         $.ajax({
             type: "GET",
             contentType: "application/json; charset=utf-8",
@@ -41,6 +40,8 @@ window.PaintingService = {
             success: function (response) {
                 var panel = response.panel;
                 for (let i = 0; i < panel.length; i++) {
+                    $(`#container-task_${panel[i].panelId}`).empty();
+
                     document.getElementById("painel").innerHTML += `
                     <div>
                     <div class="painel" 
@@ -83,7 +84,7 @@ window.PaintingService = {
 
 
                     panel[i].task.forEach(element => {
-                        window.PaintingService.addTask(element.taskId); 
+                        window.PaintingService.searchTask(element.taskId, panel[i].panelId); 
                     });
                 }
 
@@ -107,7 +108,7 @@ window.PaintingService = {
             url: config.urlLocal + "panel/save",
             data: JSON.stringify(data),
             success: function (response) {
-                console.log(response)
+                window.PaintingService.searchPanel();
             }
         });
         return false;
@@ -127,16 +128,42 @@ window.PaintingService = {
         element.style.display = "none";
     },
 
-    addTask: function (id) {
-        var element = document.getElementById(`container-task_${id}`);
+    searchTask: function (taskId, panelId) {
+        var element = document.getElementById(`container-task_${panelId}`);
         element.innerHTML += `
         <canvas 
-            id="task_${id}" 
+            id="task_${taskId}" 
             class="task-painel"  
             draggable="true" 
             ondragstart="window.PaintingService.dragstart_handler(event)";
             ondragend="window.PaintingService.dragent_handler(event)">
         </canvas>`;
+    },
+
+    addTask: function(panelId){
+        let data = {
+            description: '',
+            title: '',
+            status: 0,
+            dateBegin: null,
+            dateFinished: null,
+            estimated: '',
+            panelId: panelId,
+            title: '',
+            user: null,
+            checkList: null
+        };
+
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            url: config.urlLocal + "task/save",
+            data: JSON.stringify(data),
+            success: function (response) {
+                window.PaintingService.searchPanel();
+            }
+        });
     }
 };
 

@@ -10,7 +10,7 @@ namespace trello.api.Models.Abstract
         public int TaskId { get; set; }
         public string Description { get; set; }
         public EnumStatus Status { get; set; }
-        public DateTime DateBegin { get; set; }
+        public DateTime? DateBegin { get; set; }
         public DateTime? DateFinished { get; set; }
         public string Estimated { get; set; }
         public int PanelId { get; set; }

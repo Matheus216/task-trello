@@ -27,30 +27,30 @@ namespace trello.api.Service.Task
 
         public TaskModel Save(TaskModel task)
         {
-            var taskInsered = new TaskModel();
-            IsValid(task);
+            IsValid(task); 
+
+            var entity = _mapper.Map<TaskEntityModel>(task);
 
             if (task.TaskId == 0)
-            {
-                var entity = _mapper.Map<TaskEntityModel>(task);
-                taskInsered = _mapper.Map<TaskModel>(_repository.Insert(entity));
+                task.TaskId = _mapper.Map<TaskModel>(_repository.Insert(entity)).TaskId;
 
-                task.TaskId = taskInsered.TaskId;
-
-                SaveTaskUser(task);
-            }
             else
-            {
-                var entity = _mapper.Map<TaskEntityModel>(task);
-                taskInsered = _mapper.Map<TaskModel>(_repository.Update(entity));
+                task.TaskId = _mapper.Map<TaskModel>(_repository.Update(entity)).TaskId;
 
-                task.TaskId = taskInsered.TaskId;
+            SaveTaskUser(task);
 
-                SaveTaskUser(task);
-            }
-
-            return taskInsered;
+            return task;
         }
+
+        private void IsValid(TaskModel task)
+        {
+            if (task.DateBegin == null) 
+                task.DateBegin = DateTime.Now; 
+
+            if (task.User == null)
+                task.User = new List<UserModel>(); 
+        }
+
         private void SaveTaskUser(TaskModel task)
         {
 
@@ -69,17 +69,6 @@ namespace trello.api.Service.Task
                 }
             }
         }
-        public bool IsValid(TaskModel task)
-        {
-            if (task.User == null)
-                throw new Exception("É necessário incluir um membro");
-
-            if (String.IsNullOrEmpty(task.Title))
-                throw new Exception("É necessário incluir um titulo");
-
-            return true;
-        }
-
         public void Remove(int id)
         {
             _repository.Delete(id); 

@@ -9,7 +9,6 @@ namespace trello.api.Service.Task
         void Remove(int id);    
         IList<TaskModel> Get();    
         TaskModel Get(int id);    
-        bool IsValid(TaskModel task);
         List<TaskModel> GetByPanelId(int id);    
     }
 }
