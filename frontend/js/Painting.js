@@ -101,7 +101,8 @@ window.PaintingService = {
                 <div id="poopup_${panel.panelId}" class="pop-up">
                     <div>
                         <h4>Ações</h4>
-                        <i class="fas fa-times" 
+                        <i class="fas fa-times"
+                            style="cursor:pointer" 
                             onclick="window.PaintingService.closePop(${panel.panelId})"></i>
                     </div>
                     <hr />
@@ -109,7 +110,7 @@ window.PaintingService = {
                         <li>Adicionar cartão..</li>
                         <li>Copiar Lista..</li>
                         <li>Mover Lista..</li>
-                        <li>Seguir..</li>
+                        <li onclick="window.PaintingService.deletePanel(${panel.panelId})">Excluir painel..</li>
                     </ul>
                     <hr />
                 </div>
@@ -182,6 +183,18 @@ window.PaintingService = {
             dataType: "json",
             url: config.urlLocal + "task/save",
             data: JSON.stringify(data),
+            success: function (response) {
+                window.PaintingService.searchTask(response.taskId, panelId);
+            }
+        });
+    },
+
+    deletePanel: function(id) {
+        $.ajax({
+            type: "DELETE",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            url: `${config.urlLocal}panel/${id}`,
             success: function (response) {
                 window.PaintingService.searchPanel();
             }

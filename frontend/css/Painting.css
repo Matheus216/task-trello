@@ -67,7 +67,7 @@ body{
         border-radius: 5px;
         color: black;
     }
-    .input-transform i{
+    .input-transform > i{
         margin-left: 25px;
         cursor: pointer;
         padding: 9px;

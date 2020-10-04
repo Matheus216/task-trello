@@ -52,9 +52,9 @@ namespace trello.api.Service.Panel
             return panelInsered;
         }
 
-        public bool Remove(int id)
+        public void Remove(int id)
         {
-            throw new System.NotImplementedException();
+            _repository.Delete(id); 
         }
     }
 }

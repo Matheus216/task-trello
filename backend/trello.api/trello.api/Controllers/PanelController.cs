@@ -10,11 +10,11 @@ namespace trello.api.Controllers
     [ApiController]
     public class PanelController : ControllerBase
     {
-        private readonly IPanelService _service; 
+        private readonly IPanelService _service;
 
         public PanelController(IPanelService service)
         {
-            _service = service; 
+            _service = service;
         }
 
         [HttpGet]
@@ -34,7 +34,8 @@ namespace trello.api.Controllers
         {
             try
             {
-                if (panel == null) {
+                if (panel == null)
+                {
                     throw new Exception("Error #001");
                 }
 
@@ -42,9 +43,9 @@ namespace trello.api.Controllers
 
                 return Ok(panelReturn);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-                return BadRequest(ex.Message); 
+                return BadRequest(ex.Message);
             }
         }
 
@@ -54,8 +55,20 @@ namespace trello.api.Controllers
         }
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult Delete(int id)
         {
+            try
+            {
+                _service.Remove(id);
+
+                return Ok( new { 
+                    success = true
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
