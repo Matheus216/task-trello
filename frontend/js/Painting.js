@@ -11,9 +11,6 @@ window.PaintingService = {
     },
 
     dragstart_handler: function (ev) {
-
-   
-
         ev.dataTransfer.setData("text/plain", ev.target.id);
         ev.dataTransfer.dropEffect = "move";
     },
@@ -50,6 +47,8 @@ window.PaintingService = {
     },
 
     searchPanel: function () {
+        $("#painel").empty();
+
         $.ajax({
             type: "GET",
             contentType: "application/json; charset=utf-8",
@@ -58,54 +57,8 @@ window.PaintingService = {
             success: function (response) {
                 var panel = response.panel;
                 for (let i = 0; i < panel.length; i++) {
-                    $(`#container-task_${panel[i].panelId}`).empty();
-
-                    document.getElementById("painel").innerHTML += `
-                    <div>
-                    <div class="painel" 
-                        ondrop="window.PaintingService.drop_handler(event, ${panel[i].panelId});" 
-                        ondragover="window.PaintingService.dragover_handler(event)">
-                        <div class="input-transform header-panel">
-                            <input value="A Fazer" />
-                            <i class="fas fa-ellipsis-h" onclick="window.PaintingService.popupShow(${panel[i].panelId})"></i>
-                            <div id="poopup_${panel[i].panelId}" class="pop-up">
-                                <div>
-                                    <h4>Ações</h4>
-                                    <i class="fas fa-times" 
-                                        onclick="window.PaintingService.closePop(${panel[i].panelId})"></i>
-                                </div>
-                                <hr />
-                                <ul>
-                                    <li>Adicionar cartão..</li>
-                                    <li>Copiar Lista..</li>
-                                    <li>Mover Lista..</li>
-                                    <li>Seguir..</li>
-                                </ul>
-                                <hr />
-                            </div>
-                        </div>
-                        <div id="container-task_${panel[i].panelId}" 
-                            ondrop="window.PaintingService.drop_handler(event, ${panel[i].panelId});" 
-                            ondragover="window.PaintingService.dragover_handler(event)">
-                        </div>
-                        <div class="footer-content">
-                            <div class="footer-painel">
-                                <i class="fas fa-plus-circle icon-circle"></i>
-                                <button class="btn-general" 
-                                    onClick="window.PaintingService.addTask(${panel[i].panelId})" >Adicionar cartão</button>
-                            </div>
-                            <div class="icon-add">
-                                <i class="fas fa-door-open"></i>
-                            </div>
-                        </div>
-                    </div></div>`;
-
-
-                    panel[i].task.forEach(element => {
-                        window.PaintingService.searchTask(element.taskId, panel[i].panelId); 
-                    });
+                    window.PaintingService.appendHtmlPanel(panel[i]); 
                 }
-
             }
         });
     },
@@ -118,7 +71,6 @@ window.PaintingService = {
             title: '',
             paintingId: 1
         };
-
         $.ajax({
             type: "POST",
             contentType: "application/json; charset=utf-8",
@@ -126,10 +78,60 @@ window.PaintingService = {
             url: config.urlLocal + "panel/save",
             data: JSON.stringify(data),
             success: function (response) {
-                window.PaintingService.searchPanel();
+                window.PaintingService.appendHtmlPanel(response); 
             }
         });
+
         return false;
+    },
+
+    appendHtmlPanel: function(panel){
+        $(`#container-task_${panel.panelId}`).empty();
+
+        document.getElementById("painel").innerHTML += `
+        <div>
+        <div class="painel" 
+            ondrop="window.PaintingService.drop_handler(event, ${panel.panelId});" 
+            ondragover="window.PaintingService.dragover_handler(event)">
+            <div class="input-transform header-panel">
+                <input value="A Fazer" />
+                <i class="fas fa-ellipsis-h" onclick="window.PaintingService.popupShow(${panel.panelId})"></i>
+                <div id="poopup_${panel.panelId}" class="pop-up">
+                    <div>
+                        <h4>Ações</h4>
+                        <i class="fas fa-times" 
+                            onclick="window.PaintingService.closePop(${panel.panelId})"></i>
+                    </div>
+                    <hr />
+                    <ul>
+                        <li>Adicionar cartão..</li>
+                        <li>Copiar Lista..</li>
+                        <li>Mover Lista..</li>
+                        <li>Seguir..</li>
+                    </ul>
+                    <hr />
+                </div>
+            </div>
+            <div id="container-task_${panel.panelId}" 
+                ondrop="window.PaintingService.drop_handler(event, ${panel.panelId});" 
+                ondragover="window.PaintingService.dragover_handler(event)">
+            </div>
+            <div class="footer-content">
+                <div class="footer-painel">
+                    <i class="fas fa-plus-circle icon-circle"></i>
+                    <button class="btn-general" 
+                        onClick="window.PaintingService.addTask(${panel.panelId})" >Adicionar cartão</button>
+                </div>
+                <div class="icon-add">
+                    <i class="fas fa-door-open"></i>
+                </div>
+            </div>
+        </div></div>`;
+
+
+        panel.task.forEach(element => {
+            window.PaintingService.searchTask(element.taskId, panel.panelId); 
+        });
     },
 
     popupShow: function (id) {

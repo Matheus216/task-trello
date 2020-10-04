@@ -11,6 +11,7 @@ body{
 
 .content-grid{
     display: flex;
+    margin: 10px 10px; 
 }
 
 .grid {
@@ -136,6 +137,7 @@ body{
     width: 300px;
     cursor: pointer;
     transition: .5s;
+    margin-top: 11px;
 }
     .btn-externo .btn-general{
         color:  #c57c0e;
@@ -159,22 +161,22 @@ body{
     color: #565656
 }
 
-.pop-up h4{
-    width: 100px;
-    margin-right: 35px;
-    margin-left: 40%;
-    display: inline-block;
-    margin-bottom: 0px;
-    margin-top: 0px;
-}
+    .pop-up h4{
+        width: 100px;
+        margin-right: 35px;
+        margin-left: 40%;
+        display: inline-block;
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
 
-.pop-up i{
-    color: red;
-}
+    .pop-up i{
+        color: red;
+    }
 
-.pop-up i:hover{
-    background: none;
-}
+    .pop-up i:hover{
+        background: none;
+    }
 
 .modal-header { 
     background: #246f8c
