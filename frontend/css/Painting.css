@@ -36,12 +36,22 @@ body{
     margin-left: 5px;
     margin-top: 5px;
     border-radius: 10px;
+}
+
+.task-painel > i {
+    margin-left: 88%;
+    margin-top: 10px;
+    color: #246f8c99;
     cursor: pointer;
 }
 
-    .task-painel:target {
-        cursor: move;
-    }
+.cabecalho-task {
+    width: 100%;
+    background: #2bb5de;
+    height: 20px;
+    border-radius: 10px 10px 0px 0px;
+    cursor: pointer;
+}
 
 .header-panel input{
     width: 185px;
@@ -195,7 +205,6 @@ body{
     }
 
     hr{
-        margin-bottom: 6px;
         border: 0;
         border-top: 1px solid rgba(0,0,0,.1);
         margin-top: 0;
@@ -271,3 +280,4 @@ body{
     border-left: 1px solid #2080a5;
     padding-left: 4px;
 }
+
