@@ -13,6 +13,8 @@ window.PaintingService = {
     dragstart_handler: function (ev) {
         ev.dataTransfer.setData("text/plain", ev.target.id);
         ev.dataTransfer.dropEffect = "move";
+
+        // $(ev.target).css('cursor', 'move')
     },
 
     dragover_handler: function (ev) {

@@ -39,6 +39,10 @@ body{
     cursor: pointer;
 }
 
+    .task-painel:target {
+        cursor: move;
+    }
+
 .header-panel input{
     width: 185px;
 }
@@ -64,7 +68,7 @@ body{
         color: black;
     }
     .input-transform i{
-        margin-left: 4px;
+        margin-left: 25px;
         cursor: pointer;
         padding: 9px;
         border-radius: 8px;
@@ -153,21 +157,33 @@ body{
 .pop-up {
     width: 290px;
     background: white;
-    padding: 10px;
     border-radius: 8px;
     position: fixed;
     display: none;
     transition: .5s;
-    color: #565656
+    color: #565656;
+    font-size: 13px;
 }
+    .pop-up ul {
+        list-style: none;
+        margin-left: -15px;
+    }
+    
+    .pop-up ul li {
+        margin-top: 17px
+    }
+
+    .pop-up ul li:hover {
+        cursor: pointer;
+    }
 
     .pop-up h4{
         width: 100px;
-        margin-right: 35px;
-        margin-left: 40%;
+        margin-right: 128px;
+        margin-left: 17px;
         display: inline-block;
-        margin-bottom: 0px;
-        margin-top: 0px;
+        margin-top: 10px;
+        font-size: 14px;
     }
 
     .pop-up i{
@@ -176,6 +192,13 @@ body{
 
     .pop-up i:hover{
         background: none;
+    }
+
+    hr{
+        margin-bottom: 6px;
+        border: 0;
+        border-top: 1px solid rgba(0,0,0,.1);
+        margin-top: 0;
     }
 
 .modal-header { 
