@@ -18,82 +18,88 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
-  <body>
-    <div id="content-body" class="content-grid">
-      <div id="painel" class="content-grid">
+<body>
+  <div id="content-body" class="content-grid">
+    <div id="painel" class="content-grid">
+    </div>
+    <div id="externo">
+      <div class="btn-externo" onclick="window.PaintingService.addPanel()">
+        <i class="fas fa-plus-circle icon-circle"></i>
+        <button class="btn-general">Adicionar painel</button>
       </div>
-      <div id="externo">
-        <div class="btn-externo" onclick="window.PaintingService.addPanel()">
-          <i class="fas fa-plus-circle icon-circle"></i>
-          <button class="btn-general">Adicionar painel</button>
-        </div>
-      </div>
-      <div class="task-painel">
-        <div class="cabecalho-task"></div>
+    </div>
+    <div class="task-painel">
+      <div class="cabecalho-task"></div>
+      <div class="content-task-header">
+        <label for="">Title of the task</label>
         <i class="fas fa-cog"></i>
-        <label for="">title</label>
       </div>
-      <div class="modal fade" id="modal-main" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <div class="input-transform">
-                <input type="text" id="title-task" value="Cadastro de tarefas">
-              </div>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+      <div class="content-task-body">
+        <label for=""></label>
+        <div class="avatar"></div>
+      </div>
+    </div>
+    <div class="modal fade" id="modal-main" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="input-transform">
+              <input type="text" id="title-task" value="Cadastro de tarefas">
             </div>
-            <div class="modal-content-task">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-content-task">
+            <div class="group-modal">
+              <label for="message-text">Decrição</label>
+              <textarea class="input-style input-style-textarea" id="message-text"></textarea>
+            </div>
+            <hr />
+            <div class="grid">
               <div class="group-modal">
-                <label for="message-text">Decrição</label>
-                <textarea class="input-style input-style-textarea" id="message-text"></textarea>
+                <label data-toggle="datapicker">Data Início</label>
+                <input type="text" class="input-style input-style-input input-date" id="dateBegin">
+                <i class="far fa-calendar-alt input-icon"></i>
               </div>
-              <hr />
-              <div class="grid">
-                <div class="group-modal">
-                  <label data-toggle="datapicker">Data Início</label>
-                  <input type="text" class="input-style input-style-input input-date" id="dateBegin">
-                  <i class="far fa-calendar-alt input-icon"></i>
-                </div>
 
-                <div class="group-modal">
-                  <label >Data Termino</label>
-                  <input type="text" class="input-style input-style-input input-date" id="dateFinished">
-                  <i class="far fa-calendar-alt input-icon"></i>
-                </div>
+              <div class="group-modal">
+                <label>Data Termino</label>
+                <input type="text" class="input-style input-style-input input-date" id="dateFinished">
+                <i class="far fa-calendar-alt input-icon"></i>
+              </div>
 
-                <div class="group-modal">
-                  <label for="estimated">Estimativa</label>
-                  <input class="input-style input-style-input" id="estimated"></input>
-                  <i class="far fa-clock input-icon"></i>
-                </div>
+              <div class="group-modal">
+                <label for="estimated">Estimativa</label>
+                <input class="input-style input-style-input" id="estimated"></input>
+                <i class="far fa-clock input-icon"></i>
+              </div>
 
-                <div class="group-modal">
-                  <label for="dateFinished">Membros</label>
-                </div>
+              <div class="group-modal">
+                <label for="dateFinished">Membros</label>
               </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-              <button type="button" class="btn btn-primary">Salvar Tarefa</button>
-            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            <button type="button" class="btn btn-primary">Salvar Tarefa</button>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <script src="../js/httpRequest.js"></script>
-    <script src="../js/Painting.js"></script>
+  <script src="../js/httpRequest.js"></script>
+  <script src="../js/Painting.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-      crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-      crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
 
 
-  </body>
+</body>
 
 </html>

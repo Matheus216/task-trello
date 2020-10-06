@@ -38,11 +38,36 @@ body{
     border-radius: 10px;
 }
 
-.task-painel > i {
-    margin-left: 88%;
-    margin-top: 10px;
-    color: #246f8c99;
-    cursor: pointer;
+.content-task-header {
+    margin-left: 10px;
+}
+    .content-task-header > i {
+        color: #246f8c99;
+        cursor: pointer;
+    }
+
+    .content-task-header > label {
+        margin: 10px 0px 0px 0px;
+        width: 80%;
+        color: #246f8c99;
+        cursor: pointer;
+    }
+
+.content-task-body {
+    margin: 0px 211px
+}
+    .content-task-body > label{
+        width: 80%;
+    }
+
+.avatar{
+    background-image: url("..\\images\\Mario.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 100%;
+    width: 46px;
+    height: 46px;
 }
 
 .cabecalho-task {
@@ -280,4 +305,3 @@ body{
     border-left: 1px solid #2080a5;
     padding-left: 4px;
 }
-
