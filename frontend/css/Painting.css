@@ -48,16 +48,22 @@ body{
 
     .content-task-header > label {
         margin: 10px 0px 0px 0px;
-        width: 80%;
-        color: #246f8c99;
+        width: 85%;
+        color: #1063b7;
         cursor: pointer;
+        font-family: monospace;
     }
 
 .content-task-body {
-    margin: 0px 211px
+    /* border: 1px solid black; */
 }
     .content-task-body > label{
-        width: 80%;
+        margin: 30px 0px 0px 18px;
+        border-bottom: 3px solid #c57c0e;
+        border-radius: 2px;
+        color: #1063b7;
+        font-family: monospace;
+        cursor: pointer;
     }
 
 .avatar{
@@ -68,6 +74,11 @@ body{
     border-radius: 100%;
     width: 46px;
     height: 46px;
+    display: inline-block;
+    position: relative;
+    left: 212px;
+    top: -23px;
+    cursor: pointer;
 }
 
 .cabecalho-task {

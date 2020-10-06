@@ -33,7 +33,7 @@ window.PaintingService = {
             panelId: id,
             taskId: parseInt(regex.exec(data)[0])
         }
-       
+
         $.ajax({
             type: "PUT",
             contentType: "application/json; charset=utf-8",
@@ -58,15 +58,15 @@ window.PaintingService = {
             success: function (response) {
                 var panel = response.panel;
                 for (let i = 0; i < panel.length; i++) {
-                    window.PaintingService.appendHtmlPanel(panel[i]); 
+                    window.PaintingService.appendHtmlPanel(panel[i]);
                 }
             }
         });
     },
 
     addPanel: function () {
-        
-        let data = { 
+
+        let data = {
             task: null,
             description: '',
             title: '',
@@ -79,14 +79,14 @@ window.PaintingService = {
             url: config.urlLocal + "panel/save",
             data: JSON.stringify(data),
             success: function (response) {
-                window.PaintingService.appendHtmlPanel(response); 
+                window.PaintingService.appendHtmlPanel(response);
             }
         });
 
         return false;
     },
 
-    appendHtmlPanel: function(panel){
+    appendHtmlPanel: function (panel) {
         $(`#container-task_${panel.panelId}`).empty();
 
         document.getElementById("painel").innerHTML += `
@@ -132,7 +132,7 @@ window.PaintingService = {
 
 
         panel.task.forEach(element => {
-            window.PaintingService.searchTask(element.taskId, panel.panelId); 
+            window.PaintingService.searchTask(element.taskId, panel.panelId);
         });
     },
 
@@ -153,16 +153,25 @@ window.PaintingService = {
     searchTask: function (taskId, panelId) {
         var element = document.getElementById(`container-task_${panelId}`);
         element.innerHTML += `
-        <canvas 
+        <div 
             id="task_${taskId}" 
             class="task-painel"  
             draggable="true" 
             ondragstart="window.PaintingService.dragstart_handler(event)";
             ondragend="window.PaintingService.dragent_handler(event)">
-        </canvas>`;
+            <div class="cabecalho-task"></div>
+            <div class="content-task-header">
+                <label for="">title of the task</label>
+                <i class="fas fa-cog"></i>
+            </div>
+                <div class="content-task-body">
+                <label for="" id="fast-date-label">12/12/2012</label>
+            </div>
+            <div class="avatar"></div>
+        </div>`;
     },
 
-    addTask: function(panelId){
+    addTask: function (panelId) {
         let data = {
             description: '',
             title: '',
@@ -188,7 +197,7 @@ window.PaintingService = {
         });
     },
 
-    deletePanel: function(id) {
+    deletePanel: function (id) {
         $.ajax({
             type: "DELETE",
             contentType: "application/json; charset=utf-8",
