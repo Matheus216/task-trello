@@ -153,7 +153,7 @@ window.PaintingService = {
     searchTask: function (task, panelId) {
         
         let element = document.getElementById(`container-task_${panelId}`);
-        let date = ajustDate(task.dateBegin); 
+        let date = ajustDate(task.dateFinished); 
 
         element.innerHTML += `
         <div 
@@ -168,7 +168,9 @@ window.PaintingService = {
                 <i class="fas fa-cog"></i>
             </div>
                 <div class="content-task-body">
-                <label for="" id="fast-date-label-${task.taskId}">${date}</label>
+                <label for="" id="fast-date-label-${task.taskId}">
+                    ${date == '' ? getCurrentDate() : date }
+                </label>
             </div>
             <div class="avatar"></div>
         </div>`;
@@ -213,8 +215,22 @@ window.PaintingService = {
     }
 };
 
+function getCurrentDate(){
+    let date = new Date(); 
+
+    let day = date.getDay();
+    let mounth = date.getMonth();
+    let year = date.getFullYear(); 
+
+    return `${day}/${mounth}/${year}`;
+}
+
 function ajustDate(date) {
     
+    if (!date) { 
+        return ''; 
+    }
+
     let a = date.substr(0, 10).split('-'); 
     let day = a[2];
     let mounth = a[1];
