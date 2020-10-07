@@ -132,7 +132,7 @@ window.PaintingService = {
 
 
         panel.task.forEach(element => {
-            window.PaintingService.searchTask(element.taskId, panel.panelId);
+            window.PaintingService.searchTask(element, panel.panelId);
         });
     },
 
@@ -150,22 +150,25 @@ window.PaintingService = {
         element.style.display = "none";
     },
 
-    searchTask: function (taskId, panelId) {
-        var element = document.getElementById(`container-task_${panelId}`);
+    searchTask: function (task, panelId) {
+        
+        let element = document.getElementById(`container-task_${panelId}`);
+        let date = ajustDate(task.dateBegin); 
+
         element.innerHTML += `
         <div 
-            id="task_${taskId}" 
+            id="task_${task.taskId}" 
             class="task-painel"  
             draggable="true" 
             ondragstart="window.PaintingService.dragstart_handler(event)";
             ondragend="window.PaintingService.dragent_handler(event)">
             <div class="cabecalho-task"></div>
             <div class="content-task-header">
-                <label for="">title of the task</label>
+                <label for="">${task.description}</label>
                 <i class="fas fa-cog"></i>
             </div>
                 <div class="content-task-body">
-                <label for="" id="fast-date-label">12/12/2012</label>
+                <label for="" id="fast-date-label-${task.taskId}">${date}</label>
             </div>
             <div class="avatar"></div>
         </div>`;
@@ -192,7 +195,7 @@ window.PaintingService = {
             url: config.urlLocal + "task/save",
             data: JSON.stringify(data),
             success: function (response) {
-                window.PaintingService.searchTask(response.taskId, panelId);
+                window.PaintingService.searchTask(response, panelId);
             }
         });
     },
@@ -209,5 +212,15 @@ window.PaintingService = {
         });
     }
 };
+
+function ajustDate(date) {
+    
+    let a = date.substr(0, 10).split('-'); 
+    let day = a[2];
+    let mounth = a[1];
+    let year = a[0];
+
+    return `${day}/${mounth}/${year}`; 
+}
 
 window.PaintingService.initializer(); 
