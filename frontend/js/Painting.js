@@ -95,7 +95,7 @@ window.PaintingService = {
             ondrop="window.PaintingService.drop_handler(event, ${panel.panelId});" 
             ondragover="window.PaintingService.dragover_handler(event)">
             <div class="input-transform header-panel">
-                <input value="A Fazer" />
+                <input value="${panel.title}" onChange="window.PaintingService.updatePanel(${panel.panelId})" />
                 <i class="fas fa-ellipsis-h" onclick="window.PaintingService.popupShow(${panel.panelId})"></i>
                 <div id="poopup_${panel.panelId}" class="pop-up">
                     <div>
