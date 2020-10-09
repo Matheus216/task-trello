@@ -49,9 +49,24 @@ namespace trello.api.Controllers
             }
         }
 
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("{id}/{description}")]
+        public ActionResult Put(int id, string description)
         {
+             try
+            {
+                if (String.IsNullOrEmpty(description) || id == 0)
+                {
+                    throw new Exception("Error #001");
+                }
+
+                var panelReturn = _service.UpdateDescription(id, description);
+
+                return Ok(panelReturn);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpDelete("{id}")]

@@ -52,6 +52,19 @@ namespace trello.api.Service.Panel
             return panelInsered;
         }
 
+        public PanelModel UpdateDescription(int id, string description)
+        {
+            var search = _mapper.Map<PanelModel>(_repository.GetById(id));
+
+            search.Title = description; 
+
+            var updated = _repository.Update
+            (
+                _mapper.Map<PanelEntityModel>(search)
+            ); 
+
+            return _mapper.Map<PanelModel>(updated); 
+        }
         public void Remove(int id)
         {
             _repository.Delete(id); 

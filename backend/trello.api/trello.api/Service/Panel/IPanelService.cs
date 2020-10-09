@@ -8,6 +8,7 @@ namespace trello.api.Service.Panel
         IList<PanelModel> Get(); 
         IList<PanelModel> GetByPaitingId(int id); 
         PanelModel Save(PanelModel panel); 
+        PanelModel UpdateDescription(int id, string description); 
         void Remove(int id); 
     }
 }

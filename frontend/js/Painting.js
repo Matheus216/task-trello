@@ -95,7 +95,7 @@ window.PaintingService = {
             ondrop="window.PaintingService.drop_handler(event, ${panel.panelId});" 
             ondragover="window.PaintingService.dragover_handler(event)">
             <div class="input-transform header-panel">
-                <input value="${panel.title}" onChange="window.PaintingService.updatePanel(${panel.panelId})" />
+                <input value="${panel.title}" onChange="window.PaintingService.updatePanel(${panel.panelId})" id="panel-${panel.panelId}" />
                 <i class="fas fa-ellipsis-h" onclick="window.PaintingService.popupShow(${panel.panelId})"></i>
                 <div id="poopup_${panel.panelId}" class="pop-up">
                     <div>
@@ -217,6 +217,23 @@ window.PaintingService = {
             url: `${config.urlLocal}panel/${id}`,
             success: function (response) {
                 window.PaintingService.searchPanel();
+            }
+        });
+    },
+    
+    updatePanel: function(id) {
+        let element = document.getElementById(`panel-${id}`);
+
+        $.ajax({
+            type: "PUT",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            url: `${config.urlLocal}panel/${id}/${element.value}`,
+            success: function (response) {
+                console.log(response);
+            },
+            error: function(err) {
+                console.log(err); 
             }
         });
     }
