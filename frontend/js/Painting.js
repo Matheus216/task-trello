@@ -153,7 +153,12 @@ window.PaintingService = {
     searchTask: function (task, panelId) {
         
         let element = document.getElementById(`container-task_${panelId}`);
-        let date = ajustDate(task.dateFinished); 
+        let date = ajustDate(task.dateFinished);
+        let title = task.description;
+
+        if (title && title.length > 26){
+            title = task.description.substr(0, 26); 
+        }
 
         element.innerHTML += `
         <div 
@@ -164,15 +169,17 @@ window.PaintingService = {
             ondragend="window.PaintingService.dragent_handler(event)">
             <div class="cabecalho-task"></div>
             <div class="content-task-header">
-                <label for="">${task.description}</label>
+                <label for="">${title}</label>
                 <i class="fas fa-cog"></i>
             </div>
-                <div class="content-task-body">
-                <label for="" id="fast-date-label-${task.taskId}">
-                    ${date == '' ? getCurrentDate() : date }
-                </label>
+            <div class="content-task-body">
+                <div class="label-date">
+                    <label for="" id="fast-date-label-${task.taskId}">
+                        ${date == '' ? getCurrentDate() : date }
+                    </label>
+                </div>
+                <div class="avatar"></div>
             </div>
-            <div class="avatar"></div>
         </div>`;
     },
 
