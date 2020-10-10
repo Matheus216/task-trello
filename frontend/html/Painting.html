@@ -29,13 +29,11 @@
         <button class="btn-general">Adicionar painel</button>
       </div>
     </div>
-   <div id="task-01">
+   <div id="modal-01">
 
    </div>
-    
   </div>
 
-  
   <script id="modalCreated" type="text/x-jsrender">
     <div class="modal fade" id="modal-main" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-lg">
@@ -80,7 +78,10 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-            <button type="button" class="btn btn-primary">Salvar Tarefa</button>
+            <button type="button" class="btn btn-primary" 
+            onclick="window.PaintingService.updateTask({{:taskId}})">
+              Salvar Tarefa
+            </button>
           </div>
         </div>
       </div>
