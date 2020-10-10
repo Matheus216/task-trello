@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using trello.api.Repositories.Entities.Context;
 using trello.api.Repositories.Entities.Models;
 
@@ -68,6 +70,18 @@ namespace trello.api.Repositories.Panel
         public PanelEntityModel Update(PanelEntityModel objIn)
         {
             var updated = _context.Panels.Update(objIn);
+
+            _context.SaveChanges();
+
+            return updated.Entity;
+        }
+        public PanelEntityModel UpdateDescription(int id , string title)
+        {
+            var search = _context.Panels.FirstOrDefault(x => x.PanelId == id); 
+
+            search.Title = title; 
+
+            var updated = _context.Panels.Update(search);
 
             _context.SaveChanges();
 
