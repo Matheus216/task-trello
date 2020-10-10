@@ -8,6 +8,8 @@ window.PaintingService = {
     initializer: function () {
         window.PaintingService.searchPanel();
         $(".input-date").datepicker();
+
+        renderTask();
     },
 
     dragstart_handler: function (ev) {
@@ -95,7 +97,8 @@ window.PaintingService = {
             ondrop="window.PaintingService.drop_handler(event, ${panel.panelId});" 
             ondragover="window.PaintingService.dragover_handler(event)">
             <div class="input-transform header-panel">
-                <input value="${panel.title}" onChange="window.PaintingService.updatePanel(${panel.panelId})" id="panel-${panel.panelId}" />
+                <input value="${panel.title}" onChange="window.PaintingService.updatePanel(${panel.panelId})" 
+                id="panel-${panel.panelId}" />
                 <i class="fas fa-ellipsis-h" onclick="window.PaintingService.popupShow(${panel.panelId})"></i>
                 <div id="poopup_${panel.panelId}" class="pop-up">
                     <div>
@@ -113,7 +116,7 @@ window.PaintingService = {
                     </ul>
                     <hr />
                 </div>
-            </div>
+            </div> 
             <div id="container-task_${panel.panelId}" 
                 ondrop="window.PaintingService.drop_handler(event, ${panel.panelId});" 
                 ondragover="window.PaintingService.dragover_handler(event)">
@@ -121,8 +124,11 @@ window.PaintingService = {
             <div class="footer-content">
                 <div class="footer-painel">
                     <i class="fas fa-plus-circle icon-circle"></i>
-                    <button class="btn-general" 
-                        onClick="window.PaintingService.addTask(${panel.panelId})" >Adicionar cartão</button>
+                    <button 
+                        class="btn-general" 
+                        data-toggle="modal" data-target="#modal-main" >
+                            Adicionar cartão
+                        </button>
                 </div>
                 <div class="icon-add">
                     <i class="fas fa-door-open"></i>
@@ -162,6 +168,7 @@ window.PaintingService = {
 
         element.innerHTML += `
         <div 
+            data-toggle="modal" data-target="#modal-main"   
             id="task_${task.taskId}" 
             class="task-painel"  
             draggable="true" 
@@ -261,6 +268,17 @@ function ajustDate(date) {
     let year = a[0];
 
     return `${day}/${mounth}/${year}`; 
+}
+
+function renderTask() {
+    let element = document.getElementById('modal-01');
+    let myTemplate = $.templates('#modalCreated');
+
+    let data =  {
+        name: 'hello world'
+    }
+
+    element.innerHTML = myTemplate.render(data);
 }
 
 window.PaintingService.initializer(); 

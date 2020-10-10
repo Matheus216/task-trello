@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://www.jsviews.com/download/jsrender.js"></script>
 </head>
 
 <body>
@@ -28,23 +29,14 @@
         <button class="btn-general">Adicionar painel</button>
       </div>
     </div>
-    <div id="" class="task-painel" draggable="true"
-      ondragstart="window.PaintingService.dragstart_handler(event)" ;
-      ondragend="window.PaintingService.dragent_handler(event)">
-      <div class="cabecalho-task"></div>
-      <div class="content-task-header">
-        <label for="">Teste</label>
-        <i class="fas fa-cog"></i>
-      </div>
-      <div class="content-task-body">
-        <div class="label-date">
-          <label for="" id="fast-date-label-1">
-            12/12/12
-          </label>
-        </div>
-        <div class="avatar"></div>
-      </div>
-    </div>
+   <div id="task-01">
+
+   </div>
+    
+  </div>
+
+  
+  <script id="modalCreated" type="text/x-jsrender">
     <div class="modal fade" id="modal-main" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -93,7 +85,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </script>
 
   <script src="../js/httpRequest.js"></script>
   <script src="../js/Painting.js"></script>
