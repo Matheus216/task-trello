@@ -40,7 +40,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <div class="input-transform">
-              <input type="text" id="title-task" value="Cadastro de tarefas">
+              <input type="text" id="title-task" value="{{:title}}">
             </div>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
@@ -49,19 +49,21 @@
           <div class="modal-content-task">
             <div class="group-modal">
               <label for="message-text">Decrição</label>
-              <textarea class="input-style input-style-textarea" id="message-text"></textarea>
+              <textarea class="input-style input-style-textarea" id="message-text" >
+                {{:description}}
+              </textarea>
             </div>
             <hr />
             <div class="grid">
               <div class="group-modal">
                 <label data-toggle="datapicker">Data Início</label>
-                <input type="text" class="input-style input-style-input input-date" id="dateBegin">
+                <input type="text" class="input-style input-style-input input-date" id="dateBegin" value="{{:dateBegin}}">
                 <i class="far fa-calendar-alt input-icon"></i>
               </div>
 
               <div class="group-modal">
                 <label>Data Termino</label>
-                <input type="text" class="input-style input-style-input input-date" id="dateFinished">
+                <input type="text" class="input-style input-style-input input-date" id="dateFinished" value="{{:dateFineshed}}">
                 <i class="far fa-calendar-alt input-icon"></i>
               </div>
 

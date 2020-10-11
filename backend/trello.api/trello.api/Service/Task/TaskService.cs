@@ -81,7 +81,14 @@ namespace trello.api.Service.Task
 
         public TaskModel Get(int id)
         {
-            throw new NotImplementedException();
+            var search = _mapper.Map<TaskModel>(_repository.GetById(id)); 
+
+            if (search == null) 
+            {
+                search = new TaskModel(); 
+            }
+
+            return search; 
         }
 
         public List<TaskModel> GetByPanelId(int id)

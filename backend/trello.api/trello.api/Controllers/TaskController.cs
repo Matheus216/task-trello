@@ -19,16 +19,19 @@ namespace trello.api.Controllers
             _service = service; 
         }
 
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult Get(int id)
         {
-            return "value";
+            try
+            {
+                var response = _service.Get(id); 
+
+                return Ok(response); 
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);                
+            }
         }
 
         [HttpPost("Save")]

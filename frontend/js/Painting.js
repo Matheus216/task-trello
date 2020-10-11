@@ -8,8 +8,6 @@ window.PaintingService = {
     initializer: function () {
         window.PaintingService.searchPanel();
         $(".input-date").datepicker();
-
-        renderTask();
     },
 
     dragstart_handler: function (ev) {
@@ -159,8 +157,8 @@ window.PaintingService = {
     searchTask: function (task, panelId) {
         
         let element = document.getElementById(`container-task_${panelId}`);
-        let date = ajustDate(task.dateFinished);
         let title = task.description;
+        let date = ajustDate(task.dateFinished); 
 
         if (title && title.length > 26){
             title = task.description.substr(0, 26); 
@@ -168,7 +166,7 @@ window.PaintingService = {
 
         element.innerHTML += `
         <div 
-            data-toggle="modal" data-target="#modal-main"   
+            onclick="window.PaintingService.openTask(${task.taskId})"
             id="task_${task.taskId}" 
             class="task-painel"  
             draggable="true" 
@@ -243,6 +241,30 @@ window.PaintingService = {
                 console.log(err); 
             }
         });
+    },
+
+    openTask(taskId) {
+        let element = document.getElementById('modal-01');
+        let myTemplate = $.templates('#modalCreated');
+
+        $.ajax({
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            url: `${config.urlLocal}Task/${taskId}`,
+            success: function (response) {
+                let modalData = {
+                    title: response.title,
+                    description: response.description,
+                    dateBegin: ajustDate(response.dateBegin),
+                    dateFinished: ajustDate(response.dateFinished),
+                    taskId: response.taskId
+                }
+
+                element.innerHTML = myTemplate.render(modalData);
+                $('#modal-main').modal('show'); 
+            }
+        });
     }
 };
 
@@ -270,15 +292,15 @@ function ajustDate(date) {
     return `${day}/${mounth}/${year}`; 
 }
 
-function renderTask() {
-    let element = document.getElementById('modal-01');
-    let myTemplate = $.templates('#modalCreated');
+// function renderTask() {
+//     let element = document.getElementById('modal-01');
+//     let myTemplate = $.templates('#modalCreated');
 
-    let data =  {
-        name: 'hello world'
-    }
+//     let data =  {
+//         name: 'hello world'
+//     }
 
-    element.innerHTML = myTemplate.render(data);
-}
+//     element.innerHTML = myTemplate.render(data);
+// }
 
 window.PaintingService.initializer(); 
