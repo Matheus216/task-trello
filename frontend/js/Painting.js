@@ -124,7 +124,7 @@ window.PaintingService = {
                     <i class="fas fa-plus-circle icon-circle"></i>
                     <button 
                         class="btn-general" 
-                        data-toggle="modal" data-target="#modal-main" >
+                        onclick="window.PaintingService.addTaskModal()">
                             Adicionar cartão
                         </button>
                 </div>
@@ -245,7 +245,7 @@ window.PaintingService = {
 
     openTask(taskId) {
         let element = document.getElementById('modal-01');
-        let myTemplate = $.templates('#modalCreated');
+        let myTemplate = $.templates('#modalUpdate');
 
         $.ajax({
             type: "GET",
@@ -263,6 +263,36 @@ window.PaintingService = {
 
                 element.innerHTML = myTemplate.render(modalData);
                 $('#modal-main').modal('show'); 
+            }
+        });
+    },
+
+    addTaskModal() {
+        let element = document.getElementById('modal-01');
+        let myTemplate = $.templates('#modalCreated');
+
+        element.innerHTML = myTemplate.render();
+        $('#modal-main').modal('show'); 
+    },
+
+    saveTask(id) {
+        
+        let data = {
+            taskId: id == null || id == undefined ? 0 : id,
+            description: $('#message-text').val(),
+            dateBegin: $('#dateBegin').val(),
+            dateFinished: $('#dateFineshed').val(),
+            estimated: $('#estimated').val()
+        }
+
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            url: `${config.urlLocal}Task/Save`,
+            data: data,
+            success: function (response) {
+                
             }
         });
     }

@@ -34,7 +34,7 @@
    </div>
   </div>
 
-  <script id="modalCreated" type="text/x-jsrender">
+  <script id="modalUpdate" type="text/x-jsrender">
     <div class="modal fade" id="modal-main" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -81,7 +81,7 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             <button type="button" class="btn btn-primary" 
-            onclick="window.PaintingService.updateTask({{:taskId}})">
+            onclick="window.PaintingService.saveTask({{:taskId}})">
               Salvar Tarefa
             </button>
           </div>
@@ -89,6 +89,62 @@
       </div>
     </div>
   </script>
+
+<script id="modalCreated" type="text/x-jsrender">
+    <div class="modal fade" id="modal-main" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="input-transform">
+              <input type="text" id="title-task" value="">
+            </div>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-content-task">
+            <div class="group-modal">
+              <label for="message-text">Decrição</label>
+              <textarea class="input-style input-style-textarea" id="message-text" >
+              </textarea>
+            </div>
+            <hr />
+            <div class="grid">
+              <div class="group-modal">
+                <label data-toggle="datapicker">Data Início</label>
+                <input type="text" class="input-style input-style-input input-date" id="dateBegin" value="">
+                <i class="far fa-calendar-alt input-icon"></i>
+              </div>
+
+              <div class="group-modal">
+                <label>Data Termino</label>
+                <input type="text" class="input-style input-style-input input-date" id="dateFinished" value="">
+                <i class="far fa-calendar-alt input-icon"></i>
+              </div>
+
+              <div class="group-modal">
+                <label for="estimated">Estimativa</label>
+                <input class="input-style input-style-input" id="estimated"></input>
+                <i class="far fa-clock input-icon"></i>
+              </div>
+
+              <div class="group-modal">
+                <label for="dateFinished">Membros</label>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            <button type="button" class="btn btn-primary" 
+            onclick="window.PaintingService.saveTask()">
+              Salvar Tarefa
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </script>
+  
 
   <script src="../js/httpRequest.js"></script>
   <script src="../js/Painting.js"></script>
