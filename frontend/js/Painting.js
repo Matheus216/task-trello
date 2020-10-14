@@ -280,8 +280,8 @@ window.PaintingService = {
         let data = {
             taskId: id == null || id == undefined ? 0 : id,
             description: $('#message-text').val(),
-            dateBegin: $('#dateBegin').val(),
-            dateFinished: $('#dateFineshed').val(),
+            dateBegin: new Date($('#dateBegin').val()),
+            dateFinished: $('#dateFineshed').val() == undefined ? null :$('#dateFineshed').val(),
             estimated: $('#estimated').val()
         }
 
@@ -290,9 +290,9 @@ window.PaintingService = {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             url: `${config.urlLocal}Task/Save`,
-            data: data,
+            data: JSON.stringify(data),
             success: function (response) {
-                
+                console.log(response); 
             }
         });
     }
