@@ -258,7 +258,9 @@ window.PaintingService = {
                     description: response.description,
                     dateBegin: ajustDate(response.dateBegin),
                     dateFinished: ajustDate(response.dateFinished),
-                    taskId: response.taskId
+                    taskId: response.taskId,
+                    panelId: response.panelId,
+                    estimated: response.estimated
                 }
 
                 element.innerHTML = myTemplate.render(modalData);
@@ -275,14 +277,16 @@ window.PaintingService = {
         $('#modal-main').modal('show'); 
     },
 
-    saveTask(id) {
+    saveTask(id, panelId){
         
         let data = {
             taskId: id == null || id == undefined ? 0 : id,
             description: $('#message-text').val(),
             dateBegin: new Date($('#dateBegin').val()),
-            dateFinished: $('#dateFineshed').val() == undefined ? null :$('#dateFineshed').val(),
-            estimated: $('#estimated').val()
+            dateFinished: $('#dateFinished').val() == undefined ? null : new Date($('#dateFinished').val()),
+            estimated: $('#estimated').val(),
+            panelId: panelId, 
+            title: $('#title-task').val()
         }
 
         $.ajax({

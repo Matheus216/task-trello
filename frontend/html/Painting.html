@@ -62,13 +62,13 @@
 
               <div class="group-modal">
                 <label>Data Termino</label>
-                <input type="text" class="input-style input-style-input input-date" id="dateFinished" value="{{:dateFineshed}}">
+                <input type="text" class="input-style input-style-input input-date" id="dateFinished" value="{{:dateFinished}}">
                 <i class="far fa-calendar-alt input-icon"></i>
               </div>
 
               <div class="group-modal">
                 <label for="estimated">Estimativa</label>
-                <input class="input-style input-style-input" id="estimated"></input>
+                <input class="input-style input-style-input" id="estimated" value="{{:estimated}}" ></input>
                 <i class="far fa-clock input-icon"></i>
               </div>
 
@@ -80,7 +80,7 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             <button type="button" class="btn btn-primary" 
-            onclick="window.PaintingService.saveTask({{:taskId}})">
+            onclick="window.PaintingService.saveTask({{:taskId}}, {{:panelId}})">
               Salvar Tarefa
             </button>
           </div>
