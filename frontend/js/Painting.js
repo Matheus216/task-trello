@@ -326,15 +326,38 @@ function ajustDate(date) {
     return `${day}/${mounth}/${year}`; 
 }
 
-// function renderTask() {
-//     let element = document.getElementById('modal-01');
-//     let myTemplate = $.templates('#modalCreated');
+function loadMember() {
+    return new Promise((resolve, reject) => {
+        resolve();
+    });
+}
 
-//     let data =  {
-//         name: 'hello world'
-//     }
+function requestMember() {
+    let xhttp = new XMLHttpRequest();
+    let url = `${urlLocal}User`;
 
-//     element.innerHTML = myTemplate.render(data);
-// }
+    xhttp.open('GET', url, false); 
+    xhttp.send(); 
+
+    return JSON.parse(xhttp.response); 
+}
+
+function constructMember(data) {
+    let elementUL = document.getElementById('member-list');
+
+    data.map(x => {
+        let li = document.createElement('li');  
+        
+        li.id = x.userId; 
+        li.innerHTML  = `${x.name}: ${x.age}`;
+
+        elementUL.appendChild(li); 
+    });
+
+}
+
+loadMember()
+    .then(requestMember)
+    .then(response => constructMember(response)); 
 
 window.PaintingService.initializer(); 
