@@ -43,7 +43,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <div class="input-transform">
-              <input type="text" id="title-task" value="{{:title}}">
+              <input type="text" id="title-task" value="{{:title}}" onchange="saveTask({{:taskId}}, {{:panelId}})">
             </div>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
@@ -98,7 +98,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <div class="input-transform">
-              <input type="text" id="title-task" value="">
+              <input type="text" id="title-task" value="" onchange="saveTask()">
             </div>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
@@ -107,7 +107,7 @@
           <div class="modal-content-task">
             <div class="group-modal">
               <label for="message-text">Decrição</label>
-              <textarea class="input-style input-style-textarea" id="message-text" ></textarea>
+              <textarea class="input-style input-style-textarea" id="message-text" onchange="saveTask()" ></textarea>
             </div>
             <hr />
             <div class="grid">

@@ -32,7 +32,7 @@ function openTask(taskId) {
     }
     
     element.innerHTML = myTemplate.render(modalData);
-    loadMember(); 
+    loadMember();
 
     $('#modal-main').modal('show');
 }
@@ -42,6 +42,9 @@ function addTaskModal() {
     let myTemplate = $.templates('#modalCreated');
 
     element.innerHTML = myTemplate.render();
+    
+    loadMember();
+
     $('#modal-main').modal('show');
 }
 
