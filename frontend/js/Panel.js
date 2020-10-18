@@ -91,7 +91,7 @@ function appendHtmlPanel(panel) {
                 <i class="fas fa-plus-circle icon-circle"></i>
                 <button 
                     class="btn-general" 
-                    onclick="addTaskModal()">
+                    onclick="addTaskModal(${panel.panelId})">
                         Adicionar cartão
                     </button>
             </div>

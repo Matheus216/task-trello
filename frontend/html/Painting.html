@@ -36,6 +36,7 @@
    <div id="modal-01">
    </div>
   </div>
+  
 
   <script id="modalUpdate" type="text/x-jsrender">
     <div class="modal fade" id="modal-main" tabindex="-1" aria-hidden="true">
@@ -98,7 +99,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <div class="input-transform">
-              <input type="text" id="title-task" value="" onchange="saveTask()">
+              <input type="text" id="title-task" value="" ">
             </div>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
@@ -107,7 +108,7 @@
           <div class="modal-content-task">
             <div class="group-modal">
               <label for="message-text">Decrição</label>
-              <textarea class="input-style input-style-textarea" id="message-text" onchange="saveTask()" ></textarea>
+              <textarea class="input-style input-style-textarea" id="message-text" ></textarea>
             </div>
             <hr />
             <div class="grid">
@@ -131,15 +132,15 @@
 
               <div class="group-modal">
                 <label for="dateFinished">Membros</label>
-                <select id='member-list'></select>
+                <select class="select-style" id='member-list'></select>
               </div>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             <button type="button" class="btn btn-primary" 
-            onclick="saveTask()">
-              Salvar Tarefa
+            onclick="saveTask(0, {{:panelId}})">
+              Criar Tarefa
             </button>
           </div>
         </div>
@@ -160,8 +161,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
     crossorigin="anonymous"></script>
-
-
+    <div class="loader " id="loader1"></div>
 </body>
 
 </html>

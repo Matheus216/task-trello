@@ -19,5 +19,19 @@ function ajustDate(date) {
     let mounth = a[1];
     let year = a[0];
 
-    return `${day}/${mounth}/${year}`;
+    return `${mounth}/${day}/${year}`;
+}
+
+function convertFormatDate(str) {
+
+    if (!str || str == undefined) {
+        return null; 
+    }
+
+    let date = str.substr(0, 10).split('/');
+    let day = date[1];
+    let mounth = date[0];
+    let year = date[2];
+
+    return `${year}-${mounth}-${day}`; 
 }

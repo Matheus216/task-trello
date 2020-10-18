@@ -33,18 +33,18 @@ function openTask(taskId) {
     
     element.innerHTML = myTemplate.render(modalData);
     loadMember();
-
+    $(".input-date").datepicker();
     $('#modal-main').modal('show');
 }
 
-function addTaskModal() {
+function addTaskModal(panelId) {
     let element = document.getElementById('modal-01');
     let myTemplate = $.templates('#modalCreated');
 
-    element.innerHTML = myTemplate.render();
+    element.innerHTML = myTemplate.render( {panelId} );
     
     loadMember();
-
+    $(".input-date").datepicker();
     $('#modal-main').modal('show');
 }
 
@@ -53,8 +53,8 @@ function saveTask(id, panelId){
     let data = {
         taskId: id == null || id == undefined ? 0 : id,
         description: $('#message-text').val(),
-        dateBegin: new Date($('#dateBegin').val()),
-        dateFinished: $('#dateFinished').val() == undefined ? null : new Date($('#dateFinished').val()),
+        dateBegin: convertFormatDate($('#dateBegin').val()),
+        dateFinished: convertFormatDate($('#dateFinished').val()),
         estimated: $('#estimated').val(),
         panelId: panelId,
         title: $('#title-task').val()
