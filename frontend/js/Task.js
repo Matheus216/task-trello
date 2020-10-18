@@ -32,6 +32,8 @@ function openTask(taskId) {
     }
     
     element.innerHTML = myTemplate.render(modalData);
+    loadMember(); 
+
     $('#modal-main').modal('show');
 }
 
@@ -56,6 +58,7 @@ function saveTask(id, panelId){
     }
 
     post(data, 'Task/Save');
+    searchPanel();
 }
 
 function searchTaskPromise(task, panelId) {
@@ -67,11 +70,11 @@ function searchTaskPromise(task, panelId) {
 
 function searchTask(task, panelId) {
     let element = document.getElementById(`container-task_${panelId}`);
-    let title = task.description;
+    let title = task.title;
     let date = ajustDate(task.dateFinished);
 
     if (title && title.length > 26) {
-        title = task.description.substr(0, 26);
+        title = task.title.substr(0, 26);
     }
 
     element.innerHTML += `

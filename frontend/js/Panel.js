@@ -1,4 +1,14 @@
 function searchPanel() {
+    searchPanelPromise()
+        .then(get)
+        .then(x => {
+            x.panel.map(panel => {
+                appendHtmlPanel(panel);
+            })
+        });;
+}
+
+function searchPanelPromise() {
     document.getElementById("painel").innerHTML = '';
 
     return new Promise((resolve, reject) => {
@@ -33,13 +43,7 @@ function deletePanel(id) {
     let endpoint = `panel/${id}`;
 
     xdelete(endpoint); 
-    searchPanel()
-        .then(get)
-        .then(x => {
-            x.panel.map(panel => {
-                appendHtmlPanel(panel);
-            })
-        });
+    searchPanel();
 }
 
 function updatePanel(id) {

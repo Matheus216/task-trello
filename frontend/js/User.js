@@ -1,28 +1,25 @@
-function loadMember() {
+function loadMemberPromise() {
     return new Promise((resolve, reject) => {
         resolve('user');
     });
 }
 
-function requestMember() {
-    let xhttp = new XMLHttpRequest();
-    let url = `${urlLocal}User`;
-
-    xhttp.open('GET', url, false);
-    xhttp.send();
-
-    return JSON.parse(xhttp.response);
-}
-
 function constructMember(data) {
-    let elementUL = document.getElementById('member-list');
+    let select = document.getElementById('member-list');
 
     data.map(x => {
-        let li = document.createElement('li');
+        let option = document.createElement('option');
 
-        li.id = x.userId;
-        li.innerHTML = `${x.name}: ${x.age}`;
+        option.id = x.userId;
+        option.value = x.userId;
+        option.innerHTML = `${x.name}`;
 
-        elementUL.appendChild(li);
+        select.appendChild(option);
     });
+}
+
+function loadMember() {
+    loadMemberPromise()
+        .then(get)
+        .then(response => constructMember(response));
 }

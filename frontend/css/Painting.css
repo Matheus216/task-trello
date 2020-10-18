@@ -313,3 +313,19 @@ body{
     border-left: 1px solid #2080a5;
     padding-left: 4px;
 }
+
+.select-style {
+    border: 1px solid #246f8c99;
+    border-radius: 5px;
+    transition: 0.4s;
+    padding: 8px;
+    font-size: 13px;
+}
+
+.select-style option {
+    border: 1px solid #246f8c99;
+    border-radius: 5px;
+    transition: 0.4s;
+    padding: 8px;
+    font-size: 13px;
+}
