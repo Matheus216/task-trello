@@ -1,8 +1,45 @@
+function searchPanel() {
+    document.getElementById("painel").innerHTML = '';
+
+    return new Promise((resolve, reject) => {
+        resolve("painting"); 
+        reject("Falha para buscar os painéis"); 
+    });
+}
+
+function addPanelPromise() {
+    return new Promise((resolve, reject)=> {
+        
+        let data = {
+            task: null,
+            description: '',
+            title: '',
+            paintingId: 1
+        };
+
+        let endpoint = "Panel/Save";
+
+        resolve(data, endpoint);
+        reject();
+    });
+}
+function addPanel() {
+    addPanelPromise()
+        .then(post)
+        .then(panel => appendHtmlPanel(panel))
+}
+
 function deletePanel(id) {
     let endpoint = `panel/${id}`;
 
     xdelete(endpoint); 
-    searchPanel();
+    searchPanel()
+        .then(get)
+        .then(x => {
+            x.panel.map(panel => {
+                appendHtmlPanel(panel);
+            })
+        });
 }
 
 function updatePanel(id) {
@@ -11,29 +48,6 @@ function updatePanel(id) {
     put(`panel/${id}/${element.value}`); 
 }
 
-function searchPanel() {
-    $("#painel").empty();
-
-    var response = get("painting");
-    var panel = response.panel;
-    
-    for (let i = 0; i < panel.length; i++) {
-        appendHtmlPanel(panel[i]);
-    }
-}
-
-function addPanel() {
-
-    let data = {
-        task: null,
-        description: '',
-        title: '',
-        paintingId: 1
-    };
-
-    appendHtmlPanel(post(data));
-    return false;
-}
 
 function appendHtmlPanel(panel) {
     $(`#container-task_${panel.panelId}`).empty();

@@ -58,8 +58,14 @@ function saveTask(id, panelId){
     post(data, 'Task/Save');
 }
 
-function searchTask(task, panelId) {
+function searchTaskPromise(task, panelId) {
+    return new Promise((resolve, reject) => {
+        resolve(task, panelId);
+        reject();
+    });
+}
 
+function searchTask(task, panelId) {
     let element = document.getElementById(`container-task_${panelId}`);
     let title = task.description;
     let date = ajustDate(task.dateFinished);
