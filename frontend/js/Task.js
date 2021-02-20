@@ -49,7 +49,7 @@ function addTaskModal(panelId) {
 }
 
 function saveTask(id, panelId){
-
+    $('#loader1').show();
     let data = {
         taskId: id == null || id == undefined ? 0 : id,
         description: $('#message-text').val(),
@@ -62,6 +62,7 @@ function saveTask(id, panelId){
 
     post(data, 'Task/Save');
     searchPanel();
+    $('#loader1').hide()
 }
 
 function searchTaskPromise(task, panelId) {
@@ -89,7 +90,7 @@ function searchTask(task, panelId) {
         ondragstart="dragstart_handler(event)">
         <div class="cabecalho-task"></div>
         <div class="content-task-header">
-            <label for="">${title}</label>
+            <label for="">${title == null ? '' : title }</label>
             <i class="fas fa-cog"></i>
         </div>
         <div class="content-task-body">

@@ -43,9 +43,16 @@ function addPanelPromise() {
 }
 
 function deletePanel(id) {
+    $('#loader1').show();
     deletePanelPromise(id)
-        .then(response => searchPanel())
-        .catch(err => console.log(err));
+        .then(response => {
+            $('#loader1').hide();
+            searchPanel() 
+        })
+        .catch(err =>  { 
+            $('#loader1').hide();
+            console.log(err)
+        });
 }
 
 function deletePanelPromise(id) {
