@@ -1,20 +1,26 @@
 function searchPanel() {
     searchPanelPromise()
-        .then(get)
-        .then(x => {
-            x.panel.map(panel => {
+        .then(response => {
+            response.panel.map(panel => {
                 appendHtmlPanel(panel);
             })
         });;
 }
 
 function searchPanelPromise() {
-    document.getElementById("painel").innerHTML = '';
-
     return new Promise((resolve, reject) => {
-        resolve("painting"); 
+        document.getElementById("painel").innerHTML = '';
+
+        var response = get("painting");
+
+        resolve(response); 
         reject("Falha para buscar os painéis"); 
     });
+}
+
+function addPanel() {
+    addPanelPromise()   
+        .then(panel => appendHtmlPanel(panel))
 }
 
 function addPanelPromise() {
@@ -29,21 +35,26 @@ function addPanelPromise() {
 
         let endpoint = "Panel/Save";
 
-        resolve(data, endpoint);
+        let response = post(data, endpoint);
+
+        resolve(response);
         reject();
     });
 }
-function addPanel() {
-    addPanelPromise()
-        .then(post)
-        .then(panel => appendHtmlPanel(panel))
-}
 
 function deletePanel(id) {
-    let endpoint = `panel/${id}`;
+    deletePanelPromise(id)
+        .then(response => searchPanel())
+        .catch(err => console.log(err));
+}
 
-    xdelete(endpoint); 
-    searchPanel();
+function deletePanelPromise(id) {
+    return new Promise((resolve, reject) => { 
+        let response = xdelete(`panel/${id}`);
+
+        resolve(response);
+        reject();
+    });
 }
 
 function updatePanel(id) {

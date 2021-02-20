@@ -26,7 +26,7 @@ namespace trello.api
             services.ImplementDI();
 
             services.AddDbContext<ContextDB>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("stringConnection"))
+                options.UseSqlite(Configuration.GetConnectionString("stringConnection"))
             ); 
         }
 

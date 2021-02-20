@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using trello.api.Repositories.Entities.Context;
 
@@ -15,28 +14,25 @@ namespace trello.api.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.8")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "5.0.3");
 
             modelBuilder.Entity("trello.api.Repositories.Entities.Models.CheckEntityModel", b =>
                 {
                     b.Property<int>("CheckId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("IsChecked")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int?>("TaskEntityModelTaskId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("TaskId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("CheckId");
 
@@ -49,11 +45,10 @@ namespace trello.api.Migrations
                 {
                     b.Property<int>("PaintingId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("PaintingId");
 
@@ -64,17 +59,16 @@ namespace trello.api.Migrations
                 {
                     b.Property<int>("PanelId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
-                    b.Property<int?>("PaintingId")
-                        .HasColumnType("int");
+                    b.Property<int>("PaintingId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("PanelId");
 
@@ -87,29 +81,28 @@ namespace trello.api.Migrations
                 {
                     b.Property<int>("TaskId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("DateBegin")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTime?>("DateBegin")
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("DateFinished")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Estimated")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("PanelId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("Status")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("TaskId");
 
@@ -121,10 +114,10 @@ namespace trello.api.Migrations
             modelBuilder.Entity("trello.api.Repositories.Entities.Models.TaskUserEntityModel", b =>
                 {
                     b.Property<int>("TaskId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("UserId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("TaskId", "UserId");
 
@@ -137,17 +130,16 @@ namespace trello.api.Migrations
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("Age")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Avatar")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("UserId");
 
@@ -165,7 +157,11 @@ namespace trello.api.Migrations
                 {
                     b.HasOne("trello.api.Repositories.Entities.Models.PaintingEntityModel", "Painting")
                         .WithMany("Panel")
-                        .HasForeignKey("PaintingId");
+                        .HasForeignKey("PaintingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Painting");
                 });
 
             modelBuilder.Entity("trello.api.Repositories.Entities.Models.TaskEntityModel", b =>
@@ -175,6 +171,8 @@ namespace trello.api.Migrations
                         .HasForeignKey("PanelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Panel");
                 });
 
             modelBuilder.Entity("trello.api.Repositories.Entities.Models.TaskUserEntityModel", b =>
@@ -190,6 +188,32 @@ namespace trello.api.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Task");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("trello.api.Repositories.Entities.Models.PaintingEntityModel", b =>
+                {
+                    b.Navigation("Panel");
+                });
+
+            modelBuilder.Entity("trello.api.Repositories.Entities.Models.PanelEntityModel", b =>
+                {
+                    b.Navigation("Task");
+                });
+
+            modelBuilder.Entity("trello.api.Repositories.Entities.Models.TaskEntityModel", b =>
+                {
+                    b.Navigation("Check");
+
+                    b.Navigation("TaskUser");
+                });
+
+            modelBuilder.Entity("trello.api.Repositories.Entities.Models.UserEntityModel", b =>
+                {
+                    b.Navigation("TaskUser");
                 });
 #pragma warning restore 612, 618
         }

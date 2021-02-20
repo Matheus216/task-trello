@@ -46,8 +46,8 @@ namespace trello.api.Repositories.Entities.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(
-                @"Server=DESKTOP-AV7L5CR\MICRO;Database=Trello;Integrated Security=True");
+            optionsBuilder.UseSqlite(
+                @"Data Source=Trello.db");
         }
 
         /*

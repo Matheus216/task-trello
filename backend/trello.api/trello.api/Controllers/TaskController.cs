@@ -19,6 +19,12 @@ namespace trello.api.Controllers
             _service = service; 
         }
 
+        [HttpGet]
+        public ActionResult Get()
+        {
+            return Ok(new { success = "Ok" });
+        }
+
         [HttpGet("{id}")]
         public ActionResult Get(int id)
         {

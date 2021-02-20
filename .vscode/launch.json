@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/backend/trello.api/trello.api/bin/Debug/netcoreapp3.1/trello.api.dll",
+            "program": "${workspaceFolder}/backend/trello.api/trello.api/bin/Debug/netcoreapp5/trello.api.dll",
             "args": [],
             "cwd": "${workspaceFolder}/backend/trello.api/trello.api",
             "stopAtEntry": false,

@@ -1,32 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Repositories\\Code\\Trello\\backend\\trello.api\\trello.api\\trello.api.csproj": {}
+    "C:\\Users\\mathe\\Documents\\code\\task-trello\\backend\\trello.api\\trello.api\\trello.api.csproj": {}
   },
   "projects": {
-    "D:\\Repositories\\Code\\Trello\\backend\\trello.api\\trello.api\\trello.api.csproj": {
+    "C:\\Users\\mathe\\Documents\\code\\task-trello\\backend\\trello.api\\trello.api\\trello.api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Repositories\\Code\\Trello\\backend\\trello.api\\trello.api\\trello.api.csproj",
+        "projectUniqueName": "C:\\Users\\mathe\\Documents\\code\\task-trello\\backend\\trello.api\\trello.api\\trello.api.csproj",
         "projectName": "trello.api",
-        "projectPath": "D:\\Repositories\\Code\\Trello\\backend\\trello.api\\trello.api\\trello.api.csproj",
+        "projectPath": "C:\\Users\\mathe\\Documents\\code\\task-trello\\backend\\trello.api\\trello.api\\trello.api.csproj",
         "packagesPath": "C:\\Users\\mathe\\.nuget\\packages\\",
-        "outputPath": "D:\\Repositories\\Code\\Trello\\backend\\trello.api\\trello.api\\obj\\",
+        "outputPath": "C:\\Users\\mathe\\Documents\\code\\task-trello\\backend\\trello.api\\trello.api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\mathe\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\mathe\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "netcoreapp5"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "http://nuget.selida.com.br/nuget": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
+          "net5.0": {
+            "targetAlias": "netcoreapp5",
             "projectReferences": {}
           }
         },
@@ -37,25 +35,30 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "net5.0": {
+          "targetAlias": "netcoreapp5",
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
-              "version": "[10.0.0, )"
-            },
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[3.1.8, )"
-            },
-            "Microsoft.EntityFrameworkCore.Design": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[3.1.8, )"
+              "version": "[10.1.1, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[3.1.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[5.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite.Design": {
+              "target": "Package",
+              "version": "[1.1.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.3, )"
             }
           },
           "imports": [
@@ -76,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }
