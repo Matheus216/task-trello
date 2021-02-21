@@ -62,6 +62,9 @@ function saveTask(id, panelId){
 
     post(data, 'Task/Save');
     searchPanel();
+
+    notification("success", "Tarefa atualizada com sucesso.");
+
     $('#loader1').hide()
 }
 

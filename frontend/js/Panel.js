@@ -47,11 +47,13 @@ function deletePanel(id) {
     deletePanelPromise(id)
         .then(response => {
             $('#loader1').hide();
-            searchPanel() 
+
+            notification("success", "Painel deletado.");
+            searchPanel();
         })
         .catch(err =>  { 
             $('#loader1').hide();
-            console.log(err)
+            notification("error", "Painel deletado.");
         });
 }
 

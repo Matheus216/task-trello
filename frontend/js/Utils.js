@@ -35,3 +35,18 @@ function convertFormatDate(str) {
 
     return `${year}-${mounth}-${day}`; 
 }
+
+function notification(type, message, emphasis = "Sucesso") { 
+    
+    var html = `        
+            <div  class="alert alert-dismissible fade alert-${type} show" role="alert" >
+                <strong>${emphasis}!</strong><div id="message">${message}</div>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>`; 
+    
+    var not = document.getElementById('modalNotification');
+
+    not.innerHTML += html; 
+} 
