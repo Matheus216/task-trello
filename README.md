@@ -1,44 +1,33 @@
-<h1 align="center" >ECOLAB - NLW - 01 <a target="_blank" rel="noopener noreferrer" href="/nathanigor/next-level-week/blob/master/assets/rocketseat.svg"><img src="./images/rocketseat.svg?sanitize=true" style="max-width:100%;"></a></h1>
+  <h1 align="center" >Mini Trello <a target="_blank" rel="noopener noreferrer"</h1>
 
+<div style="display: inline">
+  <img height="200" src="./frontend/images/Painting.png" align="right" >
+</div>
 
-
-<img height="400" src="./frontend/images/Painting.png" align="right">
-
-<p>O #NextLevelWeek foi para mim</p>
-  <h1>EXPERIÊNCIA ÚNICA!</h1>
-
-<p> Além das tecnologias aprendidas foi muito importante o networking criado entre os devs. </p>
+<h1>Objetivo puramente didático aperfeiçoamento em JavaScript!</h1>
+<strong>Não finalizado</strong>
 <h3>Tecnologias utilizadas neste projeto:</h3>
 <ul>
-<li>Typescript</li>
-<li>NodeJS</li>
-<li>Express</li>
-<li>Knex</li>
-<li>React</li>
-<li>React Native</li>
-<li>Expo</li>
+<li>JavaScript</li>
+<li>JSRender</li>
+<li>Dotnet Core 5</li>
+<li>C#</li>
+<li>Postman</li>
+<li>Bootstrap (para os modais e notificações)</li>
+<li>Promises</li>
+<li>Injeção de dependência</li>
 </ul>
 
 <h2>A idéia do projeto</h2>
-<p>O <strong>Ecoleta</strong> é uma aplicação mobile e web pensado na "Semana do Meio Ambiente". Sendo uma plataforma que conecta empresas que realizam coleta de diversos resíduos e pessoas interessadas em descobrir onde podem levar esses resíduos.
+<p>O <strong>Mini trello</strong> é uma aplicação web que foi desenvolvida com objetivo de aprender um pouco mais sobre javascript, se desafiando clonando partes de um projeto grande. O objetivo não é tornar o código um modelo (ainda) vou melhorando com o tempo conforme vou estudando mais a linguagem.
 </p>
 <h3>Scripts úteis</h3>
 
-<p>Para iniciar o servidor: <code>npm run dev</code></p>
-<p>Criar as migrations: <code>knex:migrate</code></p>
-<p>Criar as seeds:: <code>knex:seed</code></p>
-<p>Iniciar a aplicação REACT: <code>yarn start</code> ou <code>npm start</code></p>
-<p>Iniciar a aplicação Mobile com o Expo: <code>expo start</code></p>
-
-<h1>Segue abaixo algumas imagens do projeto mobile:</h1>
-
-| | | | |
-|:-------------------------:|:-------------------------:|:-------------------------:| :-------------------------:|
-|<img width="1604" alt="Next Level Week Imagem dispositivo mobile" src="./images/mobile1.jfif"> | <img width="1604" alt="Next Level Week Imagem dispositivo mobile" src="./images/mobile2.jfif"> | <img width="1604" alt="Next Level Week Imagem dispositivo mobile" src="./images/mobile3.jfif"> | <img width="1604" alt="Next Level Week Imagem dispositivo mobile" src="./images/mobile4.jfif">|
+<p>Para iniciar o servidor: <code>dotnet run</code></p>
+<p>Criar as migrations: <code>dotnet ef migrations "Nome do banco"  / dotnet ef update database</code></p>
 
 <h1>Segue abaixo algumas imagens do projeto web:</h1>
 
 | | |
 |:-------------------------:|:-------------------------:|
-|<img width="1604" alt="Next Level Week Imagem dispositivo web" src="./images/web01.jpg"> | <img width="1604" alt="Next Level Week Imagem dispositivo web" src="./images/web02.jpg"> |
-|<img width="1604" alt="Next Level Week Imagem dispositivo web" src="./images/web03.jpg"> | 
+|<img width="1604" alt="Criação da tarefa" src="./frontend/images/CreateTask.png"> | <img width="1604" alt="Atualização da tarefab" src="./frontend/images/Editando.png"> | 
