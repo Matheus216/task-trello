@@ -94,7 +94,7 @@ function searchTask(task, panelId) {
         <div class="cabecalho-task"></div>
         <div class="content-task-header">
             <label for="">${title == null ? '' : title }</label>
-            <i class="fas fa-cog"></i>
+            <i class="fas fa-cog" ></i>
         </div>
         <div class="content-task-body">
             <div class="label-date">
