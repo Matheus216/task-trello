@@ -1,7 +1,7 @@
   <h1 align="center" >Mini Trello <a target="_blank" rel="noopener noreferrer"</h1>
 
 <div style="display: inline">
-  <img height="200" src="./frontend/images/Painting.png" align="right" >
+  <img height="300" src="./frontend/images/Painting.png" align="right" >
 </div>
 
 <h1>Objetivo puramente didático aperfeiçoamento em JavaScript!</h1>
@@ -28,6 +28,7 @@
 
 <h1>Segue abaixo algumas imagens do projeto web:</h1>
 
-| | |
-|:-------------------------:|:-------------------------:|
-|<img width="1604" alt="Criação da tarefa" src="./frontend/images/CreateTask.png"> | <img width="1604" alt="Atualização da tarefab" src="./frontend/images/Editando.png"> | 
+| |
+|:-------------------------:|
+|<img width="1604" alt="Criação da tarefa" src="./frontend/images/CreateTask.png"> |
+|<img width="1604" alt="Atualização da tarefab" src="./frontend/images/Editando.png"> | 
